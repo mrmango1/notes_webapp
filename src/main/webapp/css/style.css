@@ -1,0 +1,44 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2em;
+}
+h1 {
+  font-family: "Coolvetica", sans-serif;
+  font-size: 3rem;
+}
+select {
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  border: none !important;
+  font-weight: bold !important;
+  background-color: #212529 !important;
+  color: white !important;
+}
+.bootstrap-table .fixed-table-container .table thead th .th-inner {
+  padding: 0;
+  text-align: center;
+  vertical-align: middle !important;
+}
+td > button {
+  width: 100px;
+}
+.fixed-table-body::-webkit-scrollbar {
+  display: none;
+}
+.fixed-table-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/*Login*/
+#loginAndRegister {
+  width: 26rem;
+  padding: 3rem;
+  border-radius: 27px;
+  background: #eff1f5;
+  box-shadow:  24px 24px 48px #b8babd,
+  -24px -24px 48px #ffffff;
+}
