@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Notes</title>
+  <title>Mis Tablas</title>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link href="css/style.css" rel="stylesheet"/>
@@ -29,6 +29,7 @@
     src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/filter-control/utils.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/table.js"></script>
 </head>
 <body>
 <%@include file="templates/handlerSession.jsp" %>
@@ -36,73 +37,16 @@
 <main class="container">
   <header>
     <h1>Hola <%=firstName %> <i class="fa fa-chart-bar"></i></h1>
-    <span>Sistema para controlar actividades </span>
+    <h3>Estas son tus tablas: </h3>
   </header>
-  <div id="toolbar">
-    <button
-      type="button"
-      class="btn btn-success"
-      data-bs-toggle="modal"
-      data-bs-target="#createModal"
-    >
-      <i class="fa fa-plus"></i>
-      Añadir Tarea
-    </button>
+<div class="container-fluid">
+  <div>
+    <button class="btn btn-secondary">Crear Tablas + </button>
   </div>
-  <table
-    id="table"
-    data-toolbar="#toolbar"
-    data-locale="es-ES"
-    data-url="./task"
-    data-toggle="table"
-    data-filter-control="true"
-    data-pagination="true"
-    data-height="550"
-    data-search="true"
-    class="table-bordered table-hover table-striped table-light "
-  >
-    <thead>
-    <tr>
-      <th data-field="done" data-align="center" data-valign="middle">
-        Hecho
-      </th>
-      <th
-        data-field="title"
-        data-align="center"
-        data-valign="middle"
-      >
-        TAREA
-      </th>
-      <th
-        data-field="description"
-        data-align="center"
-        data-valign="middle"
-      >
-        DESCRIPCION
-      </th>
-      <th data-field="importance" data-valign="middle" data-align="center">
-        IMPORTANCIA
-      </th>
-      <th
-        data-field="limit_date"
-        data-align="center"
-        data-valign="middle"
-      >
-        FINALIZA
-      </th>
-      <th
-        data-field="operate"
-        data-formatter="operateFormatter"
-        data-width="222"
-        data-align="center"
-        data-valign="middle"
-      >
-        ACCION
-      </th>
-    </tr>
-    </thead>
-  </table>
+  <div id="response">
 
+  </div>
+</div>
 </main>
 </body>
 </html>
