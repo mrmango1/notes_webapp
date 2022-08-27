@@ -20,13 +20,13 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.jsp">Mis Notas</a>
+          <a class="nav-link" href="index.jsp">Tablas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.jsp">Crear Tablas</a>
+          <a class="nav-link" href="task.jsp">Notas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="index.jsp">Acerca de</a>
+          <a class="nav-link" href="about.jsp">Acerca de</a>
         </li>
       </ul>
     </div>
