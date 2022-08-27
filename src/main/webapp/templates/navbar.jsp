@@ -35,7 +35,7 @@
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Detalles</a></li>
         <li><a class="dropdown-item" href="#">Configuracion</a></li>
-        <li><a class="dropdown-item" href="LogoutServlet">Cerrar Sesion</a></li>
+        <li><a class="dropdown-item" href="./logout">Cerrar Sesion</a></li>
       </ul>
     </li>
   </div>

@@ -15,7 +15,7 @@ const checkPassword = (form) => {
   return true
 }
 
-function register(event, form) {
+const register = (event, form) => {
   if (!checkPassword(form)) {
     alert("Password and confirm password are not equal")
     event.preventDefault()
@@ -27,7 +27,7 @@ function register(event, form) {
       body: clearDataForm(form, "confirmPassword", "observation"),
     }).then((response) => {
       if (response.ok) {
-        window.location.replace("./index.jsp");
+        window.location.assign("./login");
       } else {
         alert("Error: " + response.statusText);
       }
