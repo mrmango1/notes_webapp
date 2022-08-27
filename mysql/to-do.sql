@@ -37,12 +37,9 @@ CREATE TABLE IF NOT EXISTS `to-do`.`table` (
   `description` VARCHAR(200) NULL,
   `color` VARCHAR(7) NULL,
   PRIMARY KEY (`id_table`, `id_person`),
-  INDEX `fk_table_person_idx` (`id_person` ASC) VISIBLE,
   CONSTRAINT `fk_table_person`
     FOREIGN KEY (`id_person`)
-    REFERENCES `to-do`.`person` (`id_person`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `to-do`.`person` (`id_person`))
 ENGINE = InnoDB;
 
 
@@ -60,12 +57,9 @@ CREATE TABLE IF NOT EXISTS `to-do`.`task` (
   `limit_date` DATETIME NULL,
   `done` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id_task`, `id_table`),
-  INDEX `fk_task_table1_idx` (`id_table` ASC) VISIBLE,
   CONSTRAINT `fk_task_table1`
     FOREIGN KEY (`id_table`)
-    REFERENCES `to-do`.`table` (`id_table`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `to-do`.`table` (`id_table`))
 ENGINE = InnoDB;
 
 
@@ -88,18 +82,12 @@ CREATE TABLE IF NOT EXISTS `to-do`.`task_has_topic` (
   `id_table` INT NOT NULL,
   `id_topic` INT NOT NULL,
   PRIMARY KEY (`id_task`, `id_table`, `id_topic`),
-  INDEX `fk_task_has_topic_topic1_idx` (`id_topic` ASC) VISIBLE,
-  INDEX `fk_task_has_topic_task1_idx` (`id_task` ASC, `id_table` ASC) VISIBLE,
   CONSTRAINT `fk_task_has_topic_task1`
     FOREIGN KEY (`id_task` , `id_table`)
-    REFERENCES `to-do`.`task` (`id_task` , `id_table`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `to-do`.`task` (`id_task` , `id_table`),
   CONSTRAINT `fk_task_has_topic_topic1`
     FOREIGN KEY (`id_topic`)
-    REFERENCES `to-do`.`topic` (`id_topic`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `to-do`.`topic` (`id_topic`))
 ENGINE = InnoDB;
 
 
