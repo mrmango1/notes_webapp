@@ -8,8 +8,8 @@ public class CDB {
 
   static {
     String databaseName = "to-do";
-    String url = "jdbc:mysql://localhost:3306/"+databaseName+"?useSSL=false&serverTimezone=UTC";
-    String user = "root";
+    String url = "jdbc:mysql://localhost:3306/" + databaseName;
+    String user = "demo_java";
     String password = "1234";
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
@@ -17,7 +17,8 @@ public class CDB {
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
     }
-  }
+  } 
+
   public static Connection getConnection() {
     return con;
   }
