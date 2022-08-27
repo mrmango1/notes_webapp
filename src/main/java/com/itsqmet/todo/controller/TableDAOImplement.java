@@ -29,11 +29,13 @@ public class TableDAOImplement implements DAO<Table>{
   }
 
   @Override
-  public List<Table> read() {
+  public List<Table> read(int id_person) {
     List<Table> listTable = new ArrayList<>();
     try {
       String query = "SELECT * FROM `table` where id_person=?";
-      ResultSet rs = con.createStatement().executeQuery(query);
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setInt(1, id_person);
+      ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Table table = new Table();
         table.setId_table(rs.getInt(1));

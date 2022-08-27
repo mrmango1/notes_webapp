@@ -30,7 +30,7 @@ public class PersonDAOImplement implements DAO<Person> {
   }
 
   @Override
-  public List<Person> read() {
+  public List<Person> read(int id_person) {
     List<Person> listPerson = new ArrayList<>();
     try {
       String query = "SELECT * FROM person";

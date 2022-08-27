@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/taskTopic")
+@WebServlet("/api/taskTopic")
 @MultipartConfig
 public class TaskTopicServlet extends HttpServlet {
   private static DAO<TaskTopic> topicDAO;
@@ -24,13 +24,13 @@ public class TaskTopicServlet extends HttpServlet {
     topicDAO = new TaskTopicDAOImplement();
   }
 
-  protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-    res.setContentType("application/json");
-    PrintWriter out = res.getWriter();
-    List<TaskTopic> taskTopicList = topicDAO.read();
-    String json = GSON.toJson(taskTopicList);
-    out.write(json);
-  }
+  // protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+  //   res.setContentType("application/json");
+  //   PrintWriter out = res.getWriter();
+  //   List<TaskTopic> taskTopicList = topicDAO.read();
+  //   String json = GSON.toJson(taskTopicList);
+  //   out.write(json);
+  // }
 
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");

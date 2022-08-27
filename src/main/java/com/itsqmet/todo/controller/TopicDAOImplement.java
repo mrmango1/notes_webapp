@@ -28,7 +28,7 @@ public class TopicDAOImplement implements DAO<Topic> {
   }
 
   @Override
-  public List<Topic> read() {
+  public List<Topic> read(int id) {
     List<Topic> listTopic = new ArrayList<>();
     try {
       String query = "SELECT * FROM topic";

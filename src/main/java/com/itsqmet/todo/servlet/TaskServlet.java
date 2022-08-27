@@ -10,12 +10,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/task")
+@WebServlet("/api/task")
 @MultipartConfig
 public class TaskServlet extends HttpServlet {
   private static DAO<Task> taskDAO;
@@ -25,11 +26,12 @@ public class TaskServlet extends HttpServlet {
     taskDAO = new TaskDAOImplement();
   }
 
-
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
-    List<Task> taskList = taskDAO.read();
+    HttpSession session = req.getSession();
+    int id_person = (Integer) session.getAttribute("person_id");
+    List<Task> taskList = taskDAO.read(id_person);
     String json = GSON.toJson(taskList);
     out.write(json);
   }
@@ -40,6 +42,8 @@ public class TaskServlet extends HttpServlet {
     data = data.replaceAll("[\\[\\]]", "");
     System.out.println(data);
     Task task = GSON.fromJson(data, Task.class);
+    HttpSession session = req.getSession();
+    task.setId_table((Integer) session.getAttribute("person_id"));
     if (taskDAO.create(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {

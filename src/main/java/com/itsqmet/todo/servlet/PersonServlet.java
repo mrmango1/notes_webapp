@@ -10,12 +10,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/person")
+@WebServlet("/api/person")
 @MultipartConfig
 public class PersonServlet extends HttpServlet {
   private static DAO<Person> personDAO;
@@ -29,10 +30,13 @@ public class PersonServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
-    List<Person> listControl = personDAO.read();
+    HttpSession session = req.getSession();
+    int id_person = (Integer) session.getAttribute("person_id");
+    List<Person> listControl = personDAO.read(id_person);
     String json = GSON.toJson(listControl);
     out.write(json);
   }
+
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());

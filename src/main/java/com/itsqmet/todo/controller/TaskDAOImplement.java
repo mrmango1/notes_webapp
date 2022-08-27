@@ -34,11 +34,13 @@ public class TaskDAOImplement implements DAO<Task> {
   }
 
   @Override
-  public List<Task> read() {
+  public List<Task> read(int id_table) {
     List<Task> listTask = new ArrayList<>();
     try {
-      String query = "SELECT * FROM task";
-      ResultSet rs = con.createStatement().executeQuery(query);
+      String query = "SELECT * FROM task where id_table=?";
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setInt(1, id_table);
+      ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Task task = new Task();
         task.setId_task(rs.getInt(1));

@@ -28,7 +28,7 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
   }
 
   @Override
-  public List<TaskTopic> read() {
+  public List<TaskTopic> read(int id) {
     List<TaskTopic> listTaskTopic = new ArrayList<>();
     try {
       String query = "SELECT * FROM task_has_topic";
