@@ -18,7 +18,7 @@ import java.util.List;
 
 @WebServlet("/api/table")
 @MultipartConfig
-public class TableServlet extends HttpServlet {
+public class TableApi extends HttpServlet {
   private static DAO<Table> tableDAO;
 
   public void init() {
@@ -31,8 +31,8 @@ public class TableServlet extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_person = (Integer) session.getAttribute("person_id");
-    List<Table> tableList = tableDAO.read(id_person);
+    int id_user = (Integer) session.getAttribute("id_user");
+    List<Table> tableList = tableDAO.read(id_user);
     String json = GSON.toJson(tableList);
     out.write(json);
   }
@@ -44,7 +44,7 @@ public class TableServlet extends HttpServlet {
     System.out.println(data);
     Table table = GSON.fromJson(data, Table.class);
     HttpSession session = req.getSession(); 
-    table.setId_person((Integer) session.getAttribute("person_id"));
+    table.setId_user((Integer) session.getAttribute("id_user"));
     if (tableDAO.create(table)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {

@@ -18,7 +18,7 @@ import java.util.List;
 
 @WebServlet("/api/task")
 @MultipartConfig
-public class TaskServlet extends HttpServlet {
+public class TaskApi extends HttpServlet {
   private static DAO<Task> taskDAO;
   private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
 
@@ -30,8 +30,8 @@ public class TaskServlet extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_person = (Integer) session.getAttribute("person_id");
-    List<Task> taskList = taskDAO.read(id_person);
+    int id_table = (Integer) session.getAttribute("table_id");
+    List<Task> taskList = taskDAO.read(id_table);
     String json = GSON.toJson(taskList);
     out.write(json);
   }
@@ -43,7 +43,7 @@ public class TaskServlet extends HttpServlet {
     System.out.println(data);
     Task task = GSON.fromJson(data, Task.class);
     HttpSession session = req.getSession();
-    task.setId_table((Integer) session.getAttribute("person_id"));
+    task.setId_table((Integer) session.getAttribute("id_user"));
     if (taskDAO.create(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {

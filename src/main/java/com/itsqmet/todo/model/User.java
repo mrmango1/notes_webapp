@@ -1,18 +1,18 @@
 package com.itsqmet.todo.model;
 
-public class Person {
-  private int id_person;
+public class User {
+  private int id_user;
   private String firstname;
   private String lastname;
   private String email;
   private String password;
 
-  public int getId_person() {
-    return id_person;
+  public int getId_user() {
+    return id_user;
   }
 
-  public void setId_person(int id_person) {
-    this.id_person = id_person;
+  public void setId_user(int id_user) {
+    this.id_user = id_user;
   }
 
   public String getFirstname() {

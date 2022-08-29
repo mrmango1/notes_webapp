@@ -1,27 +1,27 @@
 package com.itsqmet.todo.controller;
 
 import com.itsqmet.todo.config.CDB;
-import com.itsqmet.todo.model.Person;
+import com.itsqmet.todo.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class LoginDAOImplement implements LoginDAO<Person> {
+public class LoginDAOImplement implements LoginDAO<User> {
   static Connection con = CDB.getConnection();
 
   @Override
-  public Person validate(Person person) {
-    Person userLogin = new Person();
+  public User validate(User user) {
+    User userLogin = new User();
     try {
-      String query = "SELECT * FROM person where email=? and password=MD5(?)";
+      String query = "SELECT * FROM user where email=? and password=MD5(?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setString(1, person.getEmail());
-      ps.setString(2, person.getPassword());
+      ps.setString(1, user.getEmail());
+      ps.setString(2, user.getPassword());
       ResultSet rs = ps.executeQuery();
       if (rs.next()) {
-        userLogin.setId_person(rs.getInt(1));
+        userLogin.setId_user(rs.getInt(1));
         userLogin.setFirstname(rs.getString(2));
         userLogin.setLastname(rs.getString(3));
         userLogin.setEmail(rs.getString(4));
@@ -34,22 +34,22 @@ public class LoginDAOImplement implements LoginDAO<Person> {
   }
 
   @Override
-  public Person register() {
-    Person userLogin = new Person();
+  public User register() {
+    User userLogin = new User();
     try {
       String query = "SELECT LAST_INSERT_ID()";
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery(query);
-      Integer id_person = null;
+      Integer id_user = null;
       while (rs.next()) {
-        id_person = rs.getInt(1);
+        id_user = rs.getInt(1);
       }
-      query = "SELECT * FROM person where id_person=(?)";
+      query = "SELECT * FROM user where id_user=(?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, id_person);
+      ps.setInt(1, id_user);
       rs = ps.executeQuery();
       if (rs.next()) {
-        userLogin.setId_person(rs.getInt(1));
+        userLogin.setId_user(rs.getInt(1));
         userLogin.setFirstname(rs.getString(2));
         userLogin.setLastname(rs.getString(3));
         userLogin.setEmail(rs.getString(4));

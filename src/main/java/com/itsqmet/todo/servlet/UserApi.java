@@ -3,8 +3,8 @@ package com.itsqmet.todo.servlet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.itsqmet.todo.controller.DAO;
-import com.itsqmet.todo.controller.PersonDAOImplement;
-import com.itsqmet.todo.model.Person;
+import com.itsqmet.todo.controller.UserDAOImplement;
+import com.itsqmet.todo.model.User;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,13 +16,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/api/person")
+@WebServlet("/api/user")
 @MultipartConfig
-public class PersonServlet extends HttpServlet {
-  private static DAO<Person> personDAO;
+public class UserApi extends HttpServlet {
+  private static DAO<User> userDAO;
 
   public void init() {
-    personDAO = new PersonDAOImplement();
+    userDAO = new UserDAOImplement();
   }
 
   private static final Gson GSON = new GsonBuilder().serializeNulls().create();
@@ -31,8 +31,8 @@ public class PersonServlet extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_person = (Integer) session.getAttribute("person_id");
-    List<Person> listControl = personDAO.read(id_person);
+    int id_user = (Integer) session.getAttribute("id_user");
+    List<User> listControl = userDAO.read(id_user);
     String json = GSON.toJson(listControl);
     out.write(json);
   }
@@ -42,8 +42,8 @@ public class PersonServlet extends HttpServlet {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
     System.out.println(data);
-    Person person = GSON.fromJson(data, Person.class);
-    if (personDAO.create(person)) {
+    User user = GSON.fromJson(data, User.class);
+    if (userDAO.create(user)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -53,8 +53,8 @@ public class PersonServlet extends HttpServlet {
   protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    Person person = GSON.fromJson(data, Person.class);
-    if (personDAO.update(person)) {
+    User user = GSON.fromJson(data, User.class);
+    if (userDAO.update(user)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -64,8 +64,8 @@ public class PersonServlet extends HttpServlet {
   protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    Person person = GSON.fromJson(data, Person.class);
-    if (personDAO.delete(person)) {
+    User user = GSON.fromJson(data, User.class);
+    if (userDAO.delete(user)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.itsqmet.todo.controller.LoginDAO;
 import com.itsqmet.todo.controller.LoginDAOImplement;
-import com.itsqmet.todo.model.Person;
+import com.itsqmet.todo.model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -16,8 +16,8 @@ import java.io.PrintWriter;
 
 @WebServlet("/login")
 @MultipartConfig
-public class LoginServlet extends HttpServlet {
-  private static LoginDAO<Person> loginDAO;
+public class Login extends HttpServlet {
+  private static LoginDAO<User> loginDAO;
 
   public void init() {
     loginDAO = new LoginDAOImplement();
@@ -29,11 +29,11 @@ public class LoginServlet extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    Person person = GSON.fromJson(data, Person.class);
-    Person userLogin = loginDAO.validate(person);
+    User user = GSON.fromJson(data, User.class);
+    User userLogin = loginDAO.validate(user);
     if (userLogin != null) {
       HttpSession session = req.getSession();
-      session.setAttribute("person_id", userLogin.getId_person());
+      session.setAttribute("id_user", userLogin.getId_user());
       //setting session to expiry in 30 mins
       session.setMaxInactiveInterval(15 * 60);
       Cookie firstName = new Cookie("firstName", userLogin.getFirstname());
@@ -56,13 +56,14 @@ public class LoginServlet extends HttpServlet {
 //    }
     }
   }
+  // Register method
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
     req.setCharacterEncoding("UTF-8");
-    Person userLogin = loginDAO.register();
+    User userLogin = loginDAO.register();
     System.out.println(userLogin);
     if (userLogin != null) {
       HttpSession session = req.getSession();
-      session.setAttribute("person_id", userLogin.getId_person());
+      session.setAttribute("id_user", userLogin.getId_user());
       //setting session to expiry in 30 mins
       session.setMaxInactiveInterval(15 * 60);
       Cookie firstName = new Cookie("firstName", userLogin.getFirstname());

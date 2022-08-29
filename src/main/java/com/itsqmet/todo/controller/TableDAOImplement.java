@@ -15,9 +15,9 @@ public class TableDAOImplement implements DAO<Table>{
   @Override
   public boolean create(Table table) {
     try {
-      String query = "INSERT INTO `table`(id_person, title, description, color) values(?,?,?,?)";
+      String query = "INSERT INTO `table`(id_user, title, description, color) values(?,?,?,?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, table.getId_person());
+      ps.setInt(1, table.getId_user());
       ps.setString(2, table.getTitle());
       ps.setString(3, table.getDescription());
       ps.setString(4, table.getColor());
@@ -29,12 +29,12 @@ public class TableDAOImplement implements DAO<Table>{
   }
 
   @Override
-  public List<Table> read(int id_person) {
+  public List<Table> read(int id_user) {
     List<Table> listTable = new ArrayList<>();
     try {
-      String query = "SELECT * FROM `table` where id_person=?";
+      String query = "SELECT * FROM `table` where id_user=?";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, id_person);
+      ps.setInt(1, id_user);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Table table = new Table();

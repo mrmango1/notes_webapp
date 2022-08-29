@@ -17,7 +17,7 @@ import java.util.List;
 
 @WebServlet("/api/topic")
 @MultipartConfig
-public class TopicServlet extends HttpServlet {
+public class TopicApi extends HttpServlet {
   private static DAO<Topic> topicDAO;
   private static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
