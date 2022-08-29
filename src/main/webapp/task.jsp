@@ -5,7 +5,7 @@
   <title>Notes</title>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link href="css/style.css" rel="stylesheet"/>
+  <link href="css/style.css" rel="stydades<lesheet"/>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -28,22 +28,22 @@
   <script
     src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
   <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/extensions/filter-control/utils.min.js"></script>
-  <script src="./js/script.js"></script>
+  <script src="./js/task.js"></script>
 </head>
 <body>
-<%@include file="templates/handlerSession.jsp" %>
-<%@include file="templates/navbar.jsp" %>
+<%@include file="templates/other/handlerSession.jsp" %>
+<%@include file="templates/other/navbar.jsp" %>
 <main class="container">
   <header>
-    <h1>Hola <%=firstName %> <i class="fa fa-chart-bar"></i></h1>
-    <span>Sistema para controlar actividades </span>
+    <h1 id="title"></h1>
+    <span id="description"></span>
   </header>
   <div id="toolbar">
     <button
       type="button"
       class="btn btn-success"
       data-bs-toggle="modal"
-      data-bs-target="#createModal"
+      data-bs-target="#createModal" 
     >
       <i class="fa fa-plus"></i>
       Añadir Tarea

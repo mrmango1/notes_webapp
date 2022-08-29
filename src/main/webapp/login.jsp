@@ -12,7 +12,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <script src="./js/login.js"></script>
   </head>
   <body>
-    <% if(session.getAttribute("person_id") != null){
+    <% if(session.getAttribute("id_user") != null){
         response.sendRedirect("index.jsp"); 
       } %>
     <header>
@@ -97,7 +97,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
               role="tabpanel"
               aria-labelledby="tab-register"
             >
-              <form action="./api/person" onsubmit="register(event,this)">
+              <form action="./api/user" onsubmit="register(event,this)">
                 <p class="text-center">Por favor, ingrese a sus datos</p>
 
                 <!-- Name input -->

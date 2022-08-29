@@ -30,8 +30,8 @@
     <script src="./js/script.js"></script>
   </head>
   <body>
-    <%@include file="templates/handlerSession.jsp" %> <%@include
-    file="templates/navbar.jsp" %>
+    <%@include file="templates/other/handlerSession.jsp" %>
+    <%@include file="templates/other/navbar.jsp" %>
     <main class="container">
       <header>
         <h1>Acerca de:</h1>

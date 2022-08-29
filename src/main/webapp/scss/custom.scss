@@ -1,7 +1,7 @@
 //Color Theme Catpuccin
 $foam: #179299;
 $pine: #31748f;
-$text: #4c4f69;
+$dark: #4c4f69;
 $base: #eff1f5;
 $yellow: #df8e1d;
 $peach: #fe640b;
@@ -10,10 +10,11 @@ $flamingo: #dd7878;
 $mauve: #8839ef;
 $marron: #e64553;
 $teal: #179299;
-$overlay: #7287fd;
+$lavender: #7287fd;
+$rosewater: #dc8a78;
 
 $body-bg: $base;
-$body-color: $text;
+$body-color: $dark;
 $nav-pills-link-active-bg: $foam;
 $theme-colors: (
   "primary": $foam,
@@ -22,18 +23,18 @@ $theme-colors: (
 );
 // Create your own map
 $custom-colors: (
-  "overlay": $overlay,
+  "overlay": $lavender,
   "fancy": $mauve,
 );
 $table-variants: (
   "primary": $foam,
   "warning": $peach,
-  "danger": $red,
-  "secondary":  $overlay,
+  "danger": $marron,
+  "secondary":  $lavender,
   "success":$mauve,
-  "info":$marron,
+  "info":$rosewater,
   "light":$teal,
-  "dark":$mauve,
+  "dark":$dark,
 );
 // Merge the maps
 $theme-colors: map-merge($theme-colors, $custom-colors);
