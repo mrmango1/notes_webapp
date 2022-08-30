@@ -1,5 +1,4 @@
 //Color Theme Catpuccin
-$foam: #179299;
 $pine: #31748f;
 $dark: #4c4f69;
 $base: #eff1f5;
@@ -15,9 +14,9 @@ $rosewater: #dc8a78;
 
 $body-bg: $base;
 $body-color: $dark;
-$nav-pills-link-active-bg: $foam;
+$nav-pills-link-active-bg: $pine;
 $theme-colors: (
-  "primary": $foam,
+  "primary": $pine,
   "warning": $peach,
   "danger": $flamingo,
 );
@@ -27,7 +26,7 @@ $custom-colors: (
   "fancy": $mauve,
 );
 $table-variants: (
-  "primary": $foam,
+  "primary": $pine,
   "warning": $peach,
   "danger": $marron,
   "secondary":  $lavender,

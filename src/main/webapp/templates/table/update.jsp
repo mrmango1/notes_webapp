@@ -51,7 +51,7 @@
           >
             <option selected value="teal">Teal</option>
             <option value="foam">Foam</option>
-            <option value="peach">Peach</option>
+            <option value="pine">Pine</option>
             <option value="marron">Marron</option>
             <option value="lavender">Lavender</option>
             <option value="rosewater">Rosewater</option>
