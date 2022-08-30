@@ -45,20 +45,41 @@
             ></textarea>
             <label for="uDescription">Descripcion</label>
           </div>
-          <select
-            class="form-select form-select-sm"
-            aria-label=".form-select-sm example"
-            name="color"
-          >
-            <option selected value="teal">Teal</option>
-            <option value="foam">Foam</option>
-            <option value="peach">Peach</option>
-            <option value="marron">Marron</option>
-            <option value="lavender">Lavender</option>
-            <option value="rosewater">Rosewater</option>
-            <option value="mauve">Mauve</option>
-            <option value="dark">Dark</option>
-          </select>
+          <div class="form-floating mb-3 mt-3">
+            <input
+              type="number"
+              max="4"
+              min="0"
+              class="form-control"
+              name="importance"
+              id="uImportance"
+              placeholder="Imporancia"
+            />
+            <label for="uImportance">Importancia</label>
+          </div>
+          <div class="form-floating mb-3 mt-3">
+            <input
+              type="datetime-local"
+              class="form-control"
+              name="limit_date"
+              id="uLimitDate"
+              placeholder="Fecha Limite"
+            />
+            <label for="uLimitDate">Fecha Limite</label>
+          </div>
+          <div class="form-check">
+            <input type="hidden" name="done" value="0" />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              name="done" 
+              id="doneCheckbox"
+            />
+            <label class="form-check-label" for="doneCheckbox">
+              Tarea Finalizada
+            </label>
+          </div>
         </form>
         <div class="modal-footer">
           <button
