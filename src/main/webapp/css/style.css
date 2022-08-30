@@ -12,10 +12,6 @@ select {
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
-  border: none !important;
-  font-weight: bold !important;
-  background-color: #212529 !important;
-  color: white !important;
 }
 .bootstrap-table .fixed-table-container .table thead th .th-inner {
   padding: 0;
