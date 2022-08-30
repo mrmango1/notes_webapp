@@ -21,7 +21,7 @@
         </div>
         <form
           id="updateForm"
-          action="api/table"
+          action="api/task"
           onsubmit="doPut(event,this)"
           class="modal-body"
         >
