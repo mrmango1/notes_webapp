@@ -47,6 +47,7 @@
             ></textarea>
             <label for="cDescription">Descripcion</label>
           </div>
+          <div class="form-floating">
           <select
             class="form-select"
             aria-label=".form-select-sm example"
@@ -61,6 +62,8 @@
             <option value="mauve">Mauve</option>
             <option value="dark">Dark</option>
           </select>
+          <label for="floatingSelect">Selecciona un color</label>
+        </div>
         </form>
         <div class="modal-footer">
           <button

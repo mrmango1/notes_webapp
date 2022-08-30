@@ -45,20 +45,23 @@
             ></textarea>
             <label for="uDescription">Descripcion</label>
           </div>
-          <select
-            class="form-select"
-            aria-label=".form-select-sm example"
-            name="color"
-          >
-            <option selected value="teal">Teal</option>
-            <option value="foam">Foam</option>
-            <option value="pine">Pine</option>
-            <option value="marron">Marron</option>
-            <option value="lavender">Lavender</option>
-            <option value="rosewater">Rosewater</option>
-            <option value="mauve">Mauve</option>
-            <option value="dark">Dark</option>
-          </select>
+          <div class="form-floating">
+            <select
+              class="form-select"
+              aria-label=".form-select-sm example"
+              name="color"
+            >
+              <option selected value="teal">Teal</option>
+              <option value="pine">Pine</option>
+              <option value="peach">Peach</option>
+              <option value="marron">Marron</option>
+              <option value="lavender">Lavender</option>
+              <option value="rosewater">Rosewater</option>
+              <option value="mauve">Mauve</option>
+              <option value="dark">Dark</option>
+            </select>
+            <label for="floatingSelect">Selecciona un color</label>
+          </div>
         </form>
         <div class="modal-footer">
           <button

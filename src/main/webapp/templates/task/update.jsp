@@ -41,6 +41,7 @@
               placeholder="Descripcion"
               name="description"
               id="uDescription"
+              style="height: 125px"
             ></textarea>
             <label for="uDescription">Descripcion</label>
           </div>

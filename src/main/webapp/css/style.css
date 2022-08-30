@@ -8,11 +8,7 @@ h1 {
   font-family: "Coolvetica", sans-serif;
   font-size: 3rem;
 }
-select {
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-}
+
 .bootstrap-table .fixed-table-container .table thead th .th-inner {
   padding: 0;
   text-align: center;

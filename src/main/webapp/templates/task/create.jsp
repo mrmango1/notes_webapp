@@ -43,23 +43,32 @@
               placeholder="Descripcion"
               name="description"
               id="cDescription"
+              style="height: 125px"
             ></textarea>
             <label for="cDescription">Descripcion</label>
           </div>
-          <select
-            class="form-select form-select-sm"
-            aria-label=".form-select-sm example"
-            name="color"
-          >
-            <option selected value="teal">Teal</option>
-            <option value="foam">Foam</option>
-            <option value="peach">Peach</option>
-            <option value="marron">Marron</option>
-            <option value="lavender">Lavender</option>
-            <option value="rosewater">Rosewater</option>
-            <option value="mauve">Mauve</option>
-            <option value="dark">Dark</option>
-          </select>
+          <div class="form-floating mb-3 mt-3">
+            <input
+              type="number"
+              max="4"
+              min="0"
+              class="form-control"
+              name="importance"
+              id="cImportance"
+              placeholder="Imporancia"
+            />
+            <label for="cImportance">Importancia</label>
+          </div>
+          <div class="form-floating mb-3 mt-3">
+            <input
+              type="datetime"
+              class="form-control"
+              name="limit_date"
+              id="cLimitDate"
+              placeholder="Fecha Limite"
+            />
+            <label for="cLimitDate">Fecha Limite</label>
+          </div>
         </form>
         <div class="modal-footer">
           <button
