@@ -43,11 +43,12 @@
               placeholder="Descripcion"
               name="description"
               id="cDescription"
+              style="height: 125px"
             ></textarea>
             <label for="cDescription">Descripcion</label>
           </div>
           <select
-            class="form-select form-select-sm"
+            class="form-select"
             aria-label=".form-select-sm example"
             name="color"
           >
