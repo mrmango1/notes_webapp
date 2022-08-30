@@ -35,11 +35,14 @@ CREATE FUNCTION stringColors(color varchar(7))
 RETURNS varchar(20)
 DETERMINISTIC
 BEGIN
-IF color='#1a1a1a' then RETURN "Negro";
-elseif color='#eff1f5' then RETURN "Blanco";
-elseif color='#df8e1d' then RETURN "Amarillo";
-elseif color='#209fb5' then RETURN "Azul";
-elseif color='#e64553' then RETURN "Rojo";
+IF color='#179299' then RETURN "light";
+elseif color='#31748f' then RETURN "primary";
+elseif color='#fe640b' then RETURN "warning";
+elseif color='#e64553' then RETURN "danger";
+elseif color='#7287fd' then RETURN "secondary";
+elseif color='#dc8a78' then RETURN "info";
+elseif color='#8839ef' then RETURN "success";
+elseif color='#4c4f69' then RETURN "dark";
 END IF;
 END $$
 DELIMITER ;

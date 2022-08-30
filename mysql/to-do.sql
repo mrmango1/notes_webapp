@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `table` (
   `id_user` INT NOT NULL,
   `title` VARCHAR(45) NOT NULL DEFAULT 'My Table',
   `description` VARCHAR(200) NULL,
-  `color` VARCHAR(7) NULL,
+  `color` VARCHAR(15) NULL,
   PRIMARY KEY (`id_table`, `id_user`))
 ENGINE = InnoDB;
 
