@@ -9,7 +9,6 @@ public class Task {
   private String title;
   private String description;
   private Timestamp created_at;
-  private Timestamp update_at;
   private Timestamp limit_date;
   private boolean done;
 
@@ -51,14 +50,6 @@ public class Task {
 
   public void setCreated_at(Timestamp created_at) {
     this.created_at = created_at;
-  }
-
-  public Timestamp getUpdate_at() {
-    return update_at;
-  }
-
-  public void setUpdate_at(Timestamp update_at) {
-    this.update_at = update_at;
   }
 
   public Timestamp getLimit_date() {

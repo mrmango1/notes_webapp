@@ -28,7 +28,7 @@ public class CurrentTable extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_table = (Integer) session.getAttribute("table_id");
+    int id_table = (Integer) session.getAttribute("id_table");
     Table table = tableDao.currentTable(id_table);
     String json = GSON.toJson(table);
     out.write(json);
@@ -40,7 +40,7 @@ public class CurrentTable extends HttpServlet {
     data = data.replaceAll("[\\[\\]]", "");
     Table table = GSON.fromJson(data, Table.class);
     HttpSession session = req.getSession();
-    session.setAttribute("table_id", table.getId_table());
+    session.setAttribute("id_table", table.getId_table());
     session.setMaxInactiveInterval(15 * 60);
   }
 }

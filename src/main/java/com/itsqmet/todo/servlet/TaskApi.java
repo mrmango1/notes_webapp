@@ -30,7 +30,7 @@ public class TaskApi extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_table = (Integer) session.getAttribute("table_id");
+    int id_table = (Integer) session.getAttribute("id_table");
     List<Task> taskList = taskDAO.read(id_table);
     String json = GSON.toJson(taskList);
     out.write(json);
@@ -43,7 +43,7 @@ public class TaskApi extends HttpServlet {
     System.out.println(data);
     Task task = GSON.fromJson(data, Task.class);
     HttpSession session = req.getSession();
-    task.setId_table((Integer) session.getAttribute("id_user"));
+    task.setId_table((Integer) session.getAttribute("id_table"));
     if (taskDAO.create(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {

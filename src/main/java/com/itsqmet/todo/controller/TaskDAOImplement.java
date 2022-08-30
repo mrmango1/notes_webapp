@@ -16,16 +16,13 @@ public class TaskDAOImplement implements DAO<Task> {
   public boolean create(Task task) {
     try {
       String query = "INSERT INTO task(id_table, title, description, importance, " +
-        "created_at, update_at, limit_date, done) values(?,?,?,?,?,?,?,?)";
+        "limit_date) values(?,?,?,?,?)";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setInt(1, task.getId_table());
       ps.setString(2, task.getTitle());
       ps.setString(3, task.getDescription());
       ps.setInt(4, task.getImportance());
-      ps.setTimestamp(5,task.getCreated_at());
-      ps.setTimestamp(6,task.getUpdate_at());
-      ps.setTimestamp(7,task.getLimit_date());
-      ps.setBoolean(8, task.isDone());
+      ps.setTimestamp(5,task.getLimit_date());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -49,9 +46,8 @@ public class TaskDAOImplement implements DAO<Task> {
         task.setDescription(rs.getString(4));
         task.setImportance(rs.getInt(5));
         task.setCreated_at(rs.getTimestamp(6));
-        task.setUpdate_at(rs.getTimestamp(7));
-        task.setLimit_date(rs.getTimestamp(8));
-        task.setDone(rs.getBoolean(9));
+        task.setLimit_date(rs.getTimestamp(7));
+        task.setDone(rs.getBoolean(8));
         listTask.add(task);
       }
     } catch (Exception ex) {
@@ -64,16 +60,14 @@ public class TaskDAOImplement implements DAO<Task> {
   public boolean update(Task task) {
     try {
       String query = "UPDATE `task` SET title=?,description=?, importance=?," +
-        "created_at=?,update_at=?,limit_date=?,done=? where id_task=?";
+        "limit_date=?,done=? where id_task=?";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setString(1, task.getTitle());
       ps.setString(2, task.getDescription());
       ps.setInt(3, task.getImportance());
-      ps.setTimestamp(4,task.getCreated_at());
-      ps.setTimestamp(5,task.getUpdate_at());
-      ps.setTimestamp(6,task.getLimit_date());
-      ps.setBoolean(7, task.isDone());
-      ps.setInt(8, task.getId_task());
+      ps.setTimestamp(4,task.getLimit_date());
+      ps.setBoolean(5, task.isDone());
+      ps.setInt(6, task.getId_task());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
