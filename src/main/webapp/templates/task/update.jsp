@@ -59,7 +59,7 @@
           </div>
           <div class="form-floating mb-3 mt-3">
             <input
-              type="datetime-local"
+              type="date"
               class="form-control"
               name="limit_date"
               id="uLimitDate"
@@ -68,11 +68,10 @@
             <label for="uLimitDate">Fecha Limite</label>
           </div>
           <div class="form-check">
-            <input type="hidden" name="done" value="0" />
             <input
               class="form-check-input"
               type="checkbox"
-              value="1"
+              value="true"
               name="done" 
               id="doneCheckbox"
             />

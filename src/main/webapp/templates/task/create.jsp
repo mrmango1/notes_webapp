@@ -61,7 +61,7 @@
           </div>
           <div class="form-floating mb-3 mt-3">
             <input
-              type="datetime-local"
+              type="date"
               class="form-control"
               name="limit_date"
               id="cLimitDate"
