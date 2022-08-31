@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `task` (
   `description` VARCHAR(200) NULL DEFAULT 'Sin descripcion',
   `importance` TINYINT NULL DEFAULT 0,
   `created_at` DATETIME NULL DEFAULT now(),
-  `limit_date` DATETIME NULL,
+  `limit_date` DATE NULL,
   `done` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id_task`, `id_table`))
 ENGINE = InnoDB;
