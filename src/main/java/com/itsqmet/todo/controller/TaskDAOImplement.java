@@ -22,7 +22,7 @@ public class TaskDAOImplement implements DAO<Task> {
       ps.setString(2, task.getTitle());
       ps.setString(3, task.getDescription());
       ps.setInt(4, task.getImportance());
-      ps.setTimestamp(5,task.getLimit_date());
+      ps.setDate(5,task.getLimit_date());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -46,7 +46,7 @@ public class TaskDAOImplement implements DAO<Task> {
         task.setDescription(rs.getString(4));
         task.setImportance(rs.getInt(5));
         task.setCreated_at(rs.getTimestamp(6));
-        task.setLimit_date(rs.getTimestamp(7));
+        task.setLimit_date(rs.getDate(7));
         task.setDone(rs.getBoolean(8));
         listTask.add(task);
       }
@@ -65,8 +65,8 @@ public class TaskDAOImplement implements DAO<Task> {
       ps.setString(1, task.getTitle());
       ps.setString(2, task.getDescription());
       ps.setInt(3, task.getImportance());
-      ps.setTimestamp(4,task.getLimit_date());
-      ps.setBoolean(5, task.isDone());
+      ps.setDate(4,task.getLimit_date());
+      ps.setBoolean(5, (Boolean) task.isDone());
       ps.setInt(6, task.getId_task());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {

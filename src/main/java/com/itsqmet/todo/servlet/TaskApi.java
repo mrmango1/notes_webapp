@@ -52,8 +52,10 @@ public class TaskApi extends HttpServlet {
   }
 
   protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
+    System.out.println(data);
     Task task = GSON.fromJson(data, Task.class);
     if (taskDAO.update(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);

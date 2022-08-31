@@ -32,16 +32,16 @@ public class TableDAOImplement implements DAO<Table>{
   public List<Table> read(int id_user) {
     List<Table> listTable = new ArrayList<>();
     try {
-      String query = "SELECT * FROM `table` where id_user=?";
+      String query = "SELECT id_table, title, description, stringColors(color) from `table` where id_user=?";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setInt(1, id_user);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Table table = new Table();
         table.setId_table(rs.getInt(1));
-        table.setTitle(rs.getString(3));
-        table.setDescription(rs.getString(4));
-        table.setColor(rs.getString(5));
+        table.setTitle(rs.getString(2));
+        table.setDescription(rs.getString(3));
+        table.setColor(rs.getString(4));
         listTable.add(table);
       }
     } catch (Exception ex) {

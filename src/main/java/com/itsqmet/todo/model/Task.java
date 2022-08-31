@@ -1,5 +1,6 @@
 package com.itsqmet.todo.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Task {
@@ -9,7 +10,7 @@ public class Task {
   private String title;
   private String description;
   private Timestamp created_at;
-  private Timestamp limit_date;
+  private Date limit_date;
   private boolean done;
 
   public int getId_task() {
@@ -52,11 +53,11 @@ public class Task {
     this.created_at = created_at;
   }
 
-  public Timestamp getLimit_date() {
+  public Date getLimit_date() {
     return limit_date;
   }
 
-  public void setLimit_date(Timestamp limit_date) {
+  public void setLimit_date(Date limit_date) {
     this.limit_date = limit_date;
   }
 

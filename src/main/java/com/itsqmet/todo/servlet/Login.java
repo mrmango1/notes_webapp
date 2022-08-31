@@ -36,8 +36,10 @@ public class Login extends HttpServlet {
       session.setAttribute("id_user", userLogin.getId_user());
       //setting session to expiry in 30 mins
       session.setMaxInactiveInterval(15 * 60);
-      Cookie firstName = new Cookie("firstName", userLogin.getFirstname());
-      Cookie lastName = new Cookie("lastName", userLogin.getLastname());
+      String firstnameStr = userLogin.getFirstname().split(" ")[0];
+      String lastnameStr = userLogin.getLastname().split(" ")[0];
+      Cookie firstName = new Cookie("firstName", firstnameStr);
+      Cookie lastName = new Cookie("lastName", lastnameStr);
       firstName.setMaxAge(30 * 60);
       lastName.setMaxAge(30 * 60);
       res.addCookie(firstName);
@@ -66,8 +68,10 @@ public class Login extends HttpServlet {
       session.setAttribute("id_user", userLogin.getId_user());
       //setting session to expiry in 30 mins
       session.setMaxInactiveInterval(15 * 60);
-      Cookie firstName = new Cookie("firstName", userLogin.getFirstname());
-      Cookie lastName = new Cookie("lastName", userLogin.getLastname());
+      String firstnameStr = userLogin.getFirstname().split(" ")[0];
+      String lastnameStr = userLogin.getLastname().split(" ")[0];
+      Cookie firstName = new Cookie("firstName", firstnameStr);
+      Cookie lastName = new Cookie("lastName", lastnameStr);
       firstName.setMaxAge(30 * 60);
       lastName.setMaxAge(30 * 60);
       res.addCookie(firstName);
