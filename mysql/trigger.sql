@@ -46,3 +46,17 @@ CASE
 END CASE;
 END $$
 DELIMITER ;
+
+# Crear un trigger que transforme el nombre de la importancia de una tarea en una escala del 0 al 4 al insertar una nueva actividad.
+DELIMITER $$
+CREATE TRIGGER priorityStringToIntInsert
+BEFORE INSERT ON `task` for each row
+BEGIN
+CASE
+    WHEN NEW.importance = "Tomate tu tiempo" THEN SET NEW.priority = 0;
+    WHEN NEW.importance = "No es importante" THEN SET NEW.priority = 1;
+    WHEN NEW.importance = "Regular" THEN SET NEW.priority = 2;
+    WHEN NEW.importance = "Importante" THEN SET NEW.priority = 3;
+    WHEN NEW.importance = "Urgente" THEN SET NEW.priority = 4;
+END CASE;
+END $$

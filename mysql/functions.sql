@@ -7,7 +7,7 @@ RETURNS varchar(10)
 DETERMINISTIC
 BEGIN
 CASE
-    WHEN impNumber=0 then RETURN "No es muy importante";
+  WHEN impNumber=0 then RETURN "Tomate tu tiempo";
 	WHEN impNumber=1 then RETURN "No es importante";
 	WHEN impNumber=2 then RETURN "Regular";
 	WHEN impNumber=3 then RETURN "Es importante"; 
