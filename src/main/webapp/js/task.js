@@ -84,8 +84,8 @@ function doPut(event, form) {
   event.preventDefault()
 }
 
-function doDelete(id) {
-  fetch(`./control?id=${id}`, {
+function doDelete() {
+  fetch(`./api/task?id_task=${idToDelete}`, {
     method: "DELETE",
   }).then((response) => {
     if (response.ok) {
@@ -109,7 +109,7 @@ async function currentTable() {
 }
 
 function deleteButton(element) {
-  idToDelete = element.parentElement.parentElement.querySelector("td").innerHTML
+  idToDelete = element.parentElement.parentElement.getAttribute("data-uniqueid")
 }
 
 currentTable()
