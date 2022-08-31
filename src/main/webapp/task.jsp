@@ -57,12 +57,14 @@
         data-pagination="true"
         data-height="550"
         data-search="true"
+        data-checkbox-header="false"
+        data-unique-id="id_task"
         class="table-bordered table-hover table-striped table-light"
       >
         <thead>
           <tr>
-            <th data-field="done" data-align="center" data-valign="middle">
-              Hecho
+            <th data-field="id_task"  data-visible="false" data-align="center" data-valign="middle">
+              ID
             </th>
             <th data-field="title" data-align="center" data-valign="middle">
               TAREA
@@ -87,6 +89,9 @@
               data-valign="middle"
             >
               FINALIZA
+            </th>
+            <th data-field="done"  data-checkbox="true" data-align="center" data-valign="middle">
+              HECHO
             </th>
             <th
               data-field="operate"

@@ -62,7 +62,7 @@ async function writeTables() {
   tables.innerHTML = ""
   data.forEach((row) => {
     const div = document.createElement("div")
-    div.classList.add("card", "text-bg-secondary", "mb-3")
+    div.classList.add("card", `text-bg-${row.color}`, "mb-3")
     div.setAttribute("style", "width: 18rem;")
     div.innerHTML = `
         <div 

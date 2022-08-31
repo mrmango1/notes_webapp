@@ -1,4 +1,6 @@
 let idToDelete = 0
+let idToupdate = 0
+let $table = $('#table')
 
 function operateFormatter(value, row, index) {
   return `<button type='button'
@@ -21,6 +23,7 @@ function operateFormatter(value, row, index) {
 const getUpdateData = (element) => {
   let updateData =
     element.parentElement.parentElement.getElementsByTagName("td")
+  idToupdate = element.parentElement.parentElement.getAttribute("data-uniqueid")
   let uForm = document
     .getElementById("updateForm")
     .getElementsByClassName("form-control")
@@ -60,10 +63,17 @@ function doPost(event, form) {
   })
   event.preventDefault()
 }
+
+const addIdTable = (form) => {
+  const formData = new FormData(form)
+  formData.append("id_task", idToupdate)
+  return formData
+}
+
 function doPut(event, form) {
   fetch(form.action, {
     method: "PUT",
-    body: new FormData(form),
+    body: addIdTable(form),
   }).then((response) => {
     if (response.ok) {
       successToast()
