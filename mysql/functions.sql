@@ -3,7 +3,7 @@ use `to-do`;
 # Calcular La importancia de una tarea con su numero del 0-4
 DELIMITER $$
 CREATE FUNCTION stringImportance(impNumber int)
-RETURNS varchar(10)
+RETURNS varchar(30)
 DETERMINISTIC
 BEGIN
 CASE
@@ -16,6 +16,24 @@ END CASE;
 END $$
 DELIMITER ;
 
+# Calcular La importancia de una tarea con su numero del 0-4
+DELIMITER $$
+CREATE FUNCTION intImportance(impString varchar(30))
+RETURNS int
+DETERMINISTIC
+BEGIN
+CASE
+	WHEN impString like "Tomate tu tiempo" then RETURN 0;
+	WHEN impString like "No es importante" then RETURN 1;
+	WHEN impString like "Regular" then RETURN 2;
+	WHEN impString like "Es importante" then RETURN 3; 
+	WHEN impString like "Urgente" then RETURN 4;
+    ELSE RETURN 0;
+END CASE;
+END $$
+DELIMITER ;
+
+drop function intImportance;
 select stringImportance(importance) from task;
 
 

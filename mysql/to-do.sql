@@ -36,8 +36,9 @@ CREATE TABLE IF NOT EXISTS `table` (
   `title` VARCHAR(45) NOT NULL DEFAULT 'My Table',
   `description` VARCHAR(200) NULL,
   `color` VARCHAR(15) NULL,
-  PRIMARY KEY (`id_table`, `id_user`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`id_table`, `id_user`),
+  foreign key (id_user) references user (id_user) on delete cascade
+)ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -52,8 +53,9 @@ CREATE TABLE IF NOT EXISTS `task` (
   `created_at` DATETIME NULL DEFAULT now(),
   `limit_date` DATE NULL,
   `done` TINYINT NULL DEFAULT 0,
-  PRIMARY KEY (`id_task`, `id_table`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`id_task`, `id_table`),
+  foreign key (id_table) references `table` (id_table) on delete cascade
+)ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -64,8 +66,9 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `id_table` INT NOT NULL,
   `name` VARCHAR(45) NULL,
   `description` VARCHAR(200) NULL,
-  PRIMARY KEY (`id_topic`, `id_table`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`id_topic`, `id_table`),
+  foreign key (id_table) references `table` (id_table) on delete cascade
+)ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -74,8 +77,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `topic_has_task` (
   `id_topic` INT NOT NULL,
   `id_task` INT NOT NULL,
-  PRIMARY KEY (`id_topic`, `id_task`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`id_topic`, `id_task`),
+  foreign key (id_topic) references `topic` (id_topic) on delete cascade,
+  foreign key (id_task) references `task` (id_task) on delete cascade
+)ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -1,16 +1,3 @@
-delimiter //
-
-# Crear un trigger que permita controlar la fecha limite de actividades ya que esta debe ser mayor que la fecha de creacion.
-
-DELIMITER $$
-CREATE TRIGGER dateLimitBeforeCreate 
-BEFORE INSERT ON task for each row
-BEGIN
-    IF old.createad_at > new.limit_date then set new.limit_date = old.createad_at;
-    END IF;
-END $$
-DELIMITER ;
-
 # Crear un trigger que transforme el nombre del color en codigo hexadecimal al insertar una nueva actividad.
 DELIMITER $$
 CREATE TRIGGER colorStringToHexInsert 
@@ -53,10 +40,10 @@ CREATE TRIGGER priorityStringToIntInsert
 BEFORE INSERT ON `task` for each row
 BEGIN
 CASE
-    WHEN NEW.importance = "Tomate tu tiempo" THEN SET NEW.priority = 0;
-    WHEN NEW.importance = "No es importante" THEN SET NEW.priority = 1;
-    WHEN NEW.importance = "Regular" THEN SET NEW.priority = 2;
-    WHEN NEW.importance = "Importante" THEN SET NEW.priority = 3;
-    WHEN NEW.importance = "Urgente" THEN SET NEW.priority = 4;
+    WHEN NEW.importance = "Tomate tu tiempo" THEN SET NEW.importance = 0;
+    WHEN NEW.importance = "No es importante" THEN SET NEW.importance = 1;
+    WHEN NEW.importance = "Regular" THEN SET NEW.importance = 2;
+    WHEN NEW.importance = "Importante" THEN SET NEW.importance = 3;
+    WHEN NEW.importance = "Urgente" THEN SET NEW.importance = 4;
 END CASE;
 END $$
