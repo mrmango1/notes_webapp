@@ -13,7 +13,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal table</h5>
+        <h5 class="modal-title">Asuntos</h5>
         <button
           type="button"
           class="btn-close"
@@ -23,22 +23,23 @@
       </div>
       <div class="modal-body">
         <table
-          id="table"
+          id="tableTopic"
           data-toggle="table"
           data-locale="es-ES"
           data-toolbar="#toolbarModal"
-          data-height="345"
+          data-height="350"
+          data-unique-id="id_topic"
           data-url="api/topic"
         >
           <thead>
             <tr>
-              <th data-field="id_topic">ID</th>
+              <th data-field="id_topic" data-visible="false">ID</th>
               <th data-field="name">NOMBRE</th>
               <th data-field="description">DESCRIPCION</th>
               <th
               data-field="operate"
               data-formatter="operateFormatterTopic"
-              data-width="100"
+              data-width="70"
               data-align="center"
               data-valign="middle"
             >

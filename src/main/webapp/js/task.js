@@ -1,6 +1,6 @@
 let idToDelete = 0
 let idToupdate = 0
-let $table = $('#table')
+let $table = $("#table")
 
 function operateFormatter(value, row, index) {
   return `<button type='button'
@@ -22,21 +22,21 @@ function operateFormatter(value, row, index) {
 
 function operateFormatterTopic(value, row, index) {
   return `<button type='button'
-            style="width: 90px;margin-bottom: 0.3em;"
+            style="width: 60px;margin-bottom: 0.3em;"
             class='btn btn-warning actionBtn' 
             data-bs-toggle='modal' 
-            data-bs-target='#updateModal'
-            onclick="getUpdateData(this)">
-            <i class="fa fa-edit"></i> Modificar
+            data-bs-target='#updateModalTopic'
+            onclick="getUpdateDataTopic(this)">
+            <i class="fa fa-edit"></i>
     </button>
     <button 
             type='button' 
-            style="width: 90px"
+            style="width: 60px"
             class='btn btn-danger actionBtn'
             data-bs-toggle="modal" 
-            data-bs-target="#deleteDialog"
+            data-bs-target="#deleteDialogTopic"
             onclick="deleteButton(this)">
-            <i class="fa fa-trash"></i> Eliminar
+            <i class="fa fa-trash"></i>
     </button>`
 }
 
@@ -51,12 +51,27 @@ const getUpdateData = (element) => {
   uForm[1].value = updateData[1].innerHTML
   uForm[2].value = updateData[2].innerHTML
   uForm[3].valueAsDate = new Date(updateData[3].innerHTML)
-  updateData[4].getElementsByTagName("input")[0].checked ? uForm[4].checked = true : uForm[4].checked = false
+  updateData[4].getElementsByTagName("input")[0].checked
+    ? (uForm[4].checked = true)
+    : (uForm[4].checked = false)
 }
+
+const getUpdateDataTopic = (element) => {
+  let updateData =
+    element.parentElement.parentElement.getElementsByTagName("td")
+  idToupdate = element.parentElement.parentElement.getAttribute("data-uniqueid")
+  let uForm = document
+    .getElementById("updateFormTopic")
+    .getElementsByClassName("update-control")
+  uForm[0].value = updateData[0].innerHTML
+  uForm[1].value = updateData[1].innerHTML
+}
+
 const successToast = () => {
   let toastLiveExample = document.getElementById("successToast")
   new bootstrap.Toast(toastLiveExample).show()
   $("#table").bootstrapTable("refresh")
+  $("#tableTopic").bootstrapTable("refresh")
   $(".modal").modal("hide")
 }
 
@@ -106,8 +121,40 @@ function doPut(event, form) {
   event.preventDefault()
 }
 
+function addIdTopic(form) {
+  const formData = new FormData(form)
+  formData.append("id_topic", idToupdate)
+  return formData
+}
+
+function doPutTopic(event, form) {
+  fetch(form.action, {
+    method: "PUT",
+    body: addIdTopic(form),
+  }).then((response) => {
+    if (response.ok) {
+      successToast()
+    } else {
+      errorToast()
+    }
+  })
+  event.preventDefault()
+}
+
 function doDelete() {
   fetch(`./api/task?id_task=${idToDelete}`, {
+    method: "DELETE",
+  }).then((response) => {
+    if (response.ok) {
+      successToast()
+    } else {
+      errorToast()
+    }
+  })
+}
+
+function doDeleteTopic() {
+  fetch(`./api/topic?id_topic=${idToDelete}`, {
     method: "DELETE",
   }).then((response) => {
     if (response.ok) {

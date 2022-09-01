@@ -1,6 +1,6 @@
-# TRABAJO EN CLASES
-use `to-do`;
-# Calcular La importancia de una tarea con su numero del 0-4
+# FUNCIONES
+
+# Calcular La importancia de una tarea con un numero del 0-4
 DELIMITER $$
 CREATE FUNCTION stringImportance(impNumber int)
 RETURNS varchar(30)
@@ -16,7 +16,7 @@ END CASE;
 END $$
 DELIMITER ;
 
-# Calcular La importancia de una tarea con su numero del 0-4
+# Calcular La importancia de una tarea desde un string con el nombre de la importancia
 DELIMITER $$
 CREATE FUNCTION intImportance(impString varchar(30))
 RETURNS int

@@ -31,11 +31,11 @@
             <input
               type="text"
               class="form-control"
-              name="title"
-              id="cTitleTopic"
-              placeholder="Titulo"
+              name="name"
+              id="cNameTopic"
+              placeholder="Nombre"
             />
-            <label for="cTitleTopic">Titulo</label>
+            <label for="cNameTopic">Nombre</label>
           </div>
           <div class="form-floating mb-3 mt-3">
             <textarea

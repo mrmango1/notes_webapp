@@ -1,7 +1,7 @@
 <section>
   <div
     class="modal fade"
-    id="updateModal"
+    id="updateModalTopic"
     data-bs-backdrop="static"
     data-bs-keyboard="false"
     tabindex="-1"
@@ -11,7 +11,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Actualizar Tabla</h5>
+          <h5 class="modal-title">Actualizar Asunto</h5>
           <button
             type="button"
             class="btn-close"
@@ -20,24 +20,24 @@
           ></button>
         </div>
         <form
-          id="updateForm"
-          action="api/task"
-          onsubmit="doPut(event,this)"
+          id="updateFormTopic"
+          action="api/topic"
+          onsubmit="doPutTopic(event,this)"
           class="modal-body"
         >
           <div class="form-floating mb-3 mt-3">
             <input
               type="text"
-              class="form-control"
-              name="title"
-              id="uTitle"
-              placeholder="Titulo"
+              class="form-control update-control"
+              name="name"
+              id="uNameTopic"
+              placeholder="Nombre"
             />
-            <label for="uTitle">Titulo</label>
+            <label for="uNameTopic">Nombre</label>
           </div>
           <div class="form-floating mb-3 mt-3">
             <textarea
-              class="form-control"
+              class="form-control update-control"
               placeholder="Descripcion"
               name="description"
               id="uDescription"
@@ -54,7 +54,7 @@
           >
             Cancelar
           </button>
-          <button type="submit" form="updateForm" class="btn btn-primary">
+          <button type="submit" form="updateFormTopic" class="btn btn-primary">
             Actualizar
           </button>
         </div>

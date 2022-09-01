@@ -25,6 +25,10 @@ td > button {
   scrollbar-width: none;
 }
 
+#modalTable .fixed-table-body {
+  height: 300px;
+}
+
 body {
   padding-top: 3rem;
 }

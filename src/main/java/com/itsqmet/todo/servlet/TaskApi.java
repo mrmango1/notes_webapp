@@ -20,7 +20,7 @@ import java.util.List;
 @MultipartConfig
 public class TaskApi extends HttpServlet {
   private static DAO<Task> taskDAO;
-  private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("MM-dd-yyyy").create();
+  private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
 
   public void init() {
     taskDAO = new TaskDAOImplement();
@@ -65,7 +65,6 @@ public class TaskApi extends HttpServlet {
   protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    System.out.println(data);
     Task task = GSON.fromJson(data, Task.class);
     if (taskDAO.delete(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
