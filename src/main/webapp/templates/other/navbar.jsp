@@ -1,13 +1,18 @@
 <style>
   nav {
       box-shadow:  0 2px 10px #929395;
-
+      font-weight: 500;
+      z-index: 10;
+  }
+  nav div > ul a:hover {
+      color: #fff;
+      background-color: #209fb5;
   }
 </style>
-<nav class="navbar navbar-expand-sm bg-overlay navbar-dark">
+<nav class="navbar navbar-expand-sm bg-overlay  fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.jsp">
-      <img src="assets/logo.png" alt="logo" height="40px">
+      <img src="assets/logo.png" alt="logo" height="30px">
     </a>
     <button
       class="navbar-toggler"

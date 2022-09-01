@@ -37,16 +37,26 @@
         <h3>Estas son tus tablas:</h3>
       </header>
       <div class="container-fluid">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-toggle="modal"
-          data-bs-target="#createModal"
-        >
-          <i class="fa fa-plus"></i>
-          Añadir Tabla
-        </button>
-        <div id="response"></div>
+        <div class="text-center" style="padding: 3em 0">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#createModal"
+          >
+            <i class="fa fa-plus"></i>
+            Añadir Tabla
+          </button>
+        </div>
+        <div
+          id="response"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            justify-items: center;
+            grid-row-gap: 2em;
+          "
+        ></div>
       </div>
     </main>
     <%@include file="templates/table.jsp" %>

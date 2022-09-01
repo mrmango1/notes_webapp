@@ -46,6 +46,15 @@
           <i class="fa fa-plus"></i>
           Añadir Tarea
         </button>
+        <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#createModal"
+      >
+        <i class="fa fa-plus"></i>
+        Añadir Asuntos
+      </button>
       </div>
       <table
         id="table"
@@ -55,7 +64,7 @@
         data-toggle="table"
         data-filter-control="true"
         data-pagination="true"
-        data-height="550"
+        data-height="500"
         data-search="true"
         data-checkbox-header="false"
         data-unique-id="id_task"

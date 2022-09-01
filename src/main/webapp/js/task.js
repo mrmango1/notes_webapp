@@ -26,10 +26,12 @@ const getUpdateData = (element) => {
   idToupdate = element.parentElement.parentElement.getAttribute("data-uniqueid")
   let uForm = document
     .getElementById("updateForm")
-    .getElementsByClassName("form-control")
-  for (let i = 0; i < updateData.length - 1; i++) {
-    uForm[i].value = updateData[i].innerHTML
-  }
+    .getElementsByClassName("update-control")
+  uForm[0].value = updateData[0].innerHTML
+  uForm[1].value = updateData[1].innerHTML
+  uForm[2].value = updateData[2].innerHTML
+  uForm[3].valueAsDate = new Date(updateData[3].innerHTML)
+  updateData[4].getElementsByTagName("input")[0].checked ? uForm[4].checked = true : uForm[4].checked = false
 }
 const successToast = () => {
   let toastLiveExample = document.getElementById("successToast")

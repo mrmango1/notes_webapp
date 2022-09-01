@@ -47,17 +47,19 @@
             ></textarea>
             <label for="cDescription">Descripcion</label>
           </div>
-          <div class="form-floating mb-3 mt-3">
-            <input
-              type="number"
-              max="4"
-              min="0"
-              class="form-control"
+          <div class="form-floating">
+            <select
+              class="form-select"
+              aria-label=".form-select-sm example"
               name="importance"
-              id="cImportance"
-              placeholder="Imporancia"
-            />
-            <label for="cImportance">Importancia</label>
+            >
+              <option selected value="Tomate tu tiempo">Tomate tu tiempo</option>
+              <option value="No es importante">No es importante</option>
+              <option value="Regular">Regular</option>
+              <option value="Es importante">Es importante</option>
+              <option value="Urgente">Urgente</option>
+            </select>
+            <label for="cImportance">Que tan importante es?</label>
           </div>
           <div class="form-floating mb-3 mt-3">
             <input
@@ -66,6 +68,7 @@
               name="limit_date"
               id="cLimitDate"
               placeholder="Fecha Limite"
+              required
             />
             <label for="cLimitDate">Fecha Limite</label>
           </div>

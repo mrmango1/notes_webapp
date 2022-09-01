@@ -1,4 +1,4 @@
-let id_table = null 
+let id_table = null
 let idToDelete = null
 
 const getTables = async () => {
@@ -24,19 +24,19 @@ function viewTable(id) {
   })
 }
 
-function editTable(element, id){
+function editTable(element, id) {
   id_table = id
   getUpdateData(element)
 }
 
-function deleteTable(id){
+function deleteTable(id) {
   idToDelete = id
 }
 
 const getUpdateData = (element) => {
   let uForm = document
-  .getElementById("updateForm")
-  .getElementsByClassName("form-control")
+    .getElementById("updateForm")
+    .getElementsByClassName("form-control")
   updateData = element.parentElement.parentElement.children
   uForm[0].value = updateData[0].innerHTML
   uForm[1].value = updateData[1].innerHTML
@@ -66,14 +66,15 @@ async function writeTables() {
     div.setAttribute("style", "width: 18rem;")
     div.innerHTML = `
         <div 
-          class="card-header" 
+          class="card-header text-center"
+          style="font-weight: bold;"
           onclick="viewTable(${row.id_table})">
           Ver Notas
         </div>
         <div class="card-body">
-            <h5 class="card-title">${row.title}</h5>
-            <p class="card-text">${row.description}</p>
-            <div>
+            <h5 class="card-title text-center">${row.title}</h5>
+            <p class="card-text text-center">${row.description}</p>
+            <div class="text-center">
                 <button 
                   class="btn btn-primary"
                   data-bs-toggle='modal' 

@@ -11,12 +11,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/login.js"></script>
   </head>
-  <body>
+  <body style="padding: 0">
     <% if(session.getAttribute("id_user") != null){
-        response.sendRedirect("index.jsp"); 
-      } %>
+    response.sendRedirect("index.jsp"); } %>
     <header>
-      <h1>Notas</h1>
+      <h1 style="font-weight: 800;">Notas</h1>
     </header>
     <div class="container-fluid">
       <section class="w-100 p-4 d-flex justify-content-center pb-4">
@@ -58,7 +57,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
               role="tabpanel"
               aria-labelledby="tab-login"
             >
-              <form method="post" action="./login">
+              <form method="post" action="./login" style="margin: 0">
                 <p class="text-center mt-3">Por favor, ingrese a su cuenta</p>
 
                 <!-- Email input -->
@@ -86,9 +85,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-3">
-                  Ingresar
-                </button>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Ingresar
+                  </button>
+                </div>
               </form>
             </div>
             <div
@@ -97,7 +98,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
               role="tabpanel"
               aria-labelledby="tab-register"
             >
-              <form action="./api/user" onsubmit="register(event,this)">
+              <form
+                action="./api/user"
+                onsubmit="register(event,this)"
+                style="margin: 0"
+              >
                 <p class="text-center">Por favor, ingrese a sus datos</p>
 
                 <!-- Name input -->
@@ -160,9 +165,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <label for="registerRepeatPassword">Repeat Password</label>
                 </div>
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-3">
-                  Registrarse
-                </button>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-block">
+                    Registrase
+                  </button>
+                </div>
               </form>
             </div>
           </div>

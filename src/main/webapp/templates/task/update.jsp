@@ -28,7 +28,7 @@
           <div class="form-floating mb-3 mt-3">
             <input
               type="text"
-              class="form-control"
+              class="form-control update-control"
               name="title"
               id="uTitle"
               placeholder="Titulo"
@@ -37,7 +37,7 @@
           </div>
           <div class="form-floating mb-3 mt-3">
             <textarea
-              class="form-control"
+              class="form-control update-control"
               placeholder="Descripcion"
               name="description"
               id="uDescription"
@@ -45,31 +45,34 @@
             ></textarea>
             <label for="uDescription">Descripcion</label>
           </div>
-          <div class="form-floating mb-3 mt-3">
-            <input
-              type="number"
-              max="4"
-              min="0"
-              class="form-control"
+          <div class="form-floating">
+            <select
+              class="form-select update-control"
+              aria-label=".form-select-sm example"
               name="importance"
-              id="uImportance"
-              placeholder="Imporancia"
-            />
-            <label for="uImportance">Importancia</label>
+            >
+              <option selected value="Tomate tu tiempo">Tomate tu tiempo</option>
+              <option value="No es importante">No es importante</option>
+              <option value="Regular">Regular</option>
+              <option value="Es importante">Es importante</option>
+              <option value="Urgente">Urgente</option>
+            </select>
+            <label for="uImportance">Que tan importante es?</label>
           </div>
           <div class="form-floating mb-3 mt-3">
             <input
               type="date"
-              class="form-control"
+              class="form-control update-control"
               name="limit_date"
               id="uLimitDate"
               placeholder="Fecha Limite"
+              required
             />
             <label for="uLimitDate">Fecha Limite</label>
           </div>
           <div class="form-check">
             <input
-              class="form-check-input"
+              class="form-check-input update-control"
               type="checkbox"
               value="true"
               name="done" 
