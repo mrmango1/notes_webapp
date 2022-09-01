@@ -72,6 +72,7 @@ public class Login extends HttpServlet {
     } else {
       PrintWriter out = res.getWriter();
       out.println("<script>alert('El correo electronico ingresado ya existe!')</script>");
+      res.sendRedirect("index.jsp");
     }
   }
 }

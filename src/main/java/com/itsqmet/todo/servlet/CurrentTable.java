@@ -2,8 +2,8 @@ package com.itsqmet.todo.servlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.itsqmet.todo.controller.CurrentDao;
-import com.itsqmet.todo.controller.CurrentDaoImplement;
+import com.itsqmet.todo.controller.CurrentDAO;
+import com.itsqmet.todo.controller.CurrentDAOImplement;
 import com.itsqmet.todo.model.Table;
 
 import jakarta.servlet.ServletException;
@@ -17,11 +17,11 @@ import java.io.PrintWriter;
 @WebServlet("/currentTable")
 @MultipartConfig
 public class CurrentTable extends HttpServlet {
-  private static CurrentDao<Table> tableDao;
+  private static CurrentDAO<Table> tableDao;
   private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
 
   public void init() {
-    tableDao = new CurrentDaoImplement();
+    tableDao = new CurrentDAOImplement();
   }
 
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {

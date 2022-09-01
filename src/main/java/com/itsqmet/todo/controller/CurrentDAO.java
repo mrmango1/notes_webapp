@@ -1,5 +1,5 @@
 package com.itsqmet.todo.controller;
 
-public interface CurrentDao<T> {
+public interface CurrentDAO<T> {
   T currentTable(int id);
 }

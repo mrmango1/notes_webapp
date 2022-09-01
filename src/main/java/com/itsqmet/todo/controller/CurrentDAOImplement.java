@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import com.itsqmet.todo.config.CDB;
 import com.itsqmet.todo.model.Table;
 
-public class CurrentDaoImplement implements CurrentDao<Table> {
+public class CurrentDAOImplement implements CurrentDAO<Table> {
   static Connection con = CDB.getConnection();
 
   @Override

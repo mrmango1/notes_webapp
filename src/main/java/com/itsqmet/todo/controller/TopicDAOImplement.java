@@ -15,9 +15,9 @@ public class TopicDAOImplement implements DAO<Topic> {
   @Override
   public boolean create(Topic task) {
     try {
-      String query = "INSERT INTO topic(id_topic, name, description) values(?,?,?)";
+      String query = "INSERT INTO topic(id_table, name, description) values(?,?,?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, task.getId_topic());
+      ps.setInt(1, task.getId_table());
       ps.setString(2, task.getName());
       ps.setString(3, task.getDescription());
       return ps.executeUpdate() != 0;
@@ -28,11 +28,13 @@ public class TopicDAOImplement implements DAO<Topic> {
   }
 
   @Override
-  public List<Topic> read(int id) {
+  public List<Topic> read(int id_table) {
     List<Topic> listTopic = new ArrayList<>();
     try {
-      String query = "SELECT * FROM topic";
-      ResultSet rs = con.createStatement().executeQuery(query);
+      String query = "SELECT id_topic, name , description FROM topic where id_table = ?";
+      PreparedStatement ps = con.prepareStatement(query);
+      ps.setInt(1, id_table);
+      ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Topic topic = new Topic();
         topic.setId_topic(rs.getInt(1));

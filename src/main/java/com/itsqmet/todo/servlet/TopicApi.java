@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,20 +26,23 @@ public class TopicApi extends HttpServlet {
     topicDAO = new TopicDAOImplement();
   }
 
-  // protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-  //   res.setContentType("application/json");
-  //   PrintWriter out = res.getWriter();
-  //   List<Topic> tableList = topicDAO.read();
-  //   String json = GSON.toJson(tableList);
-  //   out.write(json);
-  // }
+  protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    res.setContentType("application/json");
+    PrintWriter out = res.getWriter();
+    HttpSession session = req.getSession();
+    int id_table = (Integer) session.getAttribute("id_table");
+    List<Topic> tableList = topicDAO.read(id_table);
+    String json = GSON.toJson(tableList);
+    out.write(json);
+  }
 
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    System.out.println(data);
     Topic topic = GSON.fromJson(data, Topic.class);
+    HttpSession session = req.getSession();
+    topic.setId_table((Integer) session.getAttribute("id_table"));
     if (topicDAO.create(topic)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {
