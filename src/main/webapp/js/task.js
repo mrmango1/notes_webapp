@@ -8,7 +8,7 @@ function operateFormatter(value, row, index) {
             data-bs-toggle='modal' 
             data-bs-target='#updateModal'
             onclick="getUpdateData(this)">
-            Modificar
+            <i class="fa fa-edit"></i> Modificar
     </button>
     <button 
             type='button' 
@@ -16,7 +16,27 @@ function operateFormatter(value, row, index) {
             data-bs-toggle="modal" 
             data-bs-target="#deleteDialog"
             onclick="deleteButton(this)">
-            Eliminar
+            <i class="fa fa-trash"></i> Eliminar
+    </button>`
+}
+
+function operateFormatterTopic(value, row, index) {
+  return `<button type='button'
+            style="width: 90px;margin-bottom: 0.3em;"
+            class='btn btn-warning actionBtn' 
+            data-bs-toggle='modal' 
+            data-bs-target='#updateModal'
+            onclick="getUpdateData(this)">
+            <i class="fa fa-edit"></i> Modificar
+    </button>
+    <button 
+            type='button' 
+            style="width: 90px"
+            class='btn btn-danger actionBtn'
+            data-bs-toggle="modal" 
+            data-bs-target="#deleteDialog"
+            onclick="deleteButton(this)">
+            <i class="fa fa-trash"></i> Eliminar
     </button>`
 }
 

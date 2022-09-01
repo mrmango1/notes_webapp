@@ -47,14 +47,13 @@
           Añadir Tarea
         </button>
         <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#createModal"
-      >
-        <i class="fa fa-plus"></i>
-        Añadir Asuntos
-      </button>
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalTable"
+        >
+          Asuntos
+        </button>
       </div>
       <table
         id="table"
@@ -72,7 +71,12 @@
       >
         <thead>
           <tr>
-            <th data-field="id_task"  data-visible="false" data-align="center" data-valign="middle">
+            <th
+              data-field="id_task"
+              data-visible="false"
+              data-align="center"
+              data-valign="middle"
+            >
               ID
             </th>
             <th data-field="title" data-align="center" data-valign="middle">
@@ -99,7 +103,12 @@
             >
               FINALIZA
             </th>
-            <th data-field="done"  data-checkbox="true" data-align="center" data-valign="middle">
+            <th
+              data-field="done"
+              data-checkbox="true"
+              data-align="center"
+              data-valign="middle"
+            >
               HECHO
             </th>
             <th
@@ -114,7 +123,8 @@
           </tr>
         </thead>
       </table>
-      <%@include file="templates/task.jsp" %>
+      <%@include file="templates/task.jsp" %> <%@include
+      file="templates/topic.jsp" %>
     </main>
   </body>
 </html>
