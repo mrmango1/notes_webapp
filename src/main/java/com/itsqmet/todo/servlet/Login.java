@@ -46,16 +46,8 @@ public class Login extends HttpServlet {
       res.addCookie(lastName);
       res.sendRedirect("index.jsp");
     } else {
-      RequestDispatcher rd = req.getServletContext().getRequestDispatcher("/login.html");
       PrintWriter out = res.getWriter();
-      out.println("<font color=red>Either user name or password is wrong.</font>");
-      rd.include(req, res);
-
-//    if (personDAO.create(person)) {
-//      res.setStatus(HttpServletResponse.SC_CREATED);
-//    } else {
-//      res.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//    }
+      out.println("<script>alert('Usuario o contraseña Incorrectas')</script>");
     }
   }
   // Register method
@@ -78,16 +70,8 @@ public class Login extends HttpServlet {
       res.addCookie(lastName);
       res.sendRedirect("index.jsp");
     } else {
-      RequestDispatcher rd = req.getServletContext().getRequestDispatcher("/login.html");
       PrintWriter out = res.getWriter();
-      out.println("<font color=red>Either user name or password is wrong.</font>");
-      rd.include(req, res);
-
-//    if (personDAO.create(person)) {
-//      res.setStatus(HttpServletResponse.SC_CREATED);
-//    } else {
-//      res.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//    }
+      out.println("<script>alert('El correo electronico ingresado ya existe!')</script>");
     }
   }
 }

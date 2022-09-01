@@ -16,13 +16,13 @@ public class TaskDAOImplement implements DAO<Task> {
   public boolean create(Task task) {
     try {
       String query = "INSERT INTO task(id_table, title, description, importance, " +
-        "limit_date) values(?,?,?,?,?)";
+          "limit_date) values(?,?,?,intImportance(?),?)";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setInt(1, task.getId_table());
       ps.setString(2, task.getTitle());
       ps.setString(3, task.getDescription());
-      ps.setInt(4, task.getImportance());
-      ps.setDate(5,task.getLimit_date());
+      ps.setString(4, task.getImportance());
+      ps.setDate(5, task.getLimit_date());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -34,20 +34,18 @@ public class TaskDAOImplement implements DAO<Task> {
   public List<Task> read(int id_table) {
     List<Task> listTask = new ArrayList<>();
     try {
-      String query = "SELECT * FROM task where id_table=?";
+      String query = "SELECT id_task,title,description,stringImportance(importance),limit_date,done FROM task where id_table=?";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setInt(1, id_table);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Task task = new Task();
         task.setId_task(rs.getInt(1));
-        task.setId_table(rs.getInt(2));
-        task.setTitle(rs.getString(3));
-        task.setDescription(rs.getString(4));
-        task.setImportance(rs.getInt(5));
-        task.setCreated_at(rs.getTimestamp(6));
-        task.setLimit_date(rs.getDate(7));
-        task.setDone(rs.getBoolean(8));
+        task.setTitle(rs.getString(2));
+        task.setDescription(rs.getString(3));
+        task.setImportance(rs.getString(4));
+        task.setLimit_date(rs.getDate(5));
+        task.setDone(rs.getBoolean(6));
         listTask.add(task);
       }
     } catch (Exception ex) {
@@ -59,13 +57,13 @@ public class TaskDAOImplement implements DAO<Task> {
   @Override
   public boolean update(Task task) {
     try {
-      String query = "UPDATE `task` SET title=?,description=?, importance=?," +
-        "limit_date=?,done=? where id_task=?";
+      String query = "UPDATE `task` SET title=?,description=?,importance=intImportance(?)," +
+          "limit_date=?,done=? where id_task=?";
       PreparedStatement ps = con.prepareStatement(query);
       ps.setString(1, task.getTitle());
       ps.setString(2, task.getDescription());
-      ps.setInt(3, task.getImportance());
-      ps.setDate(4,task.getLimit_date());
+      ps.setString(3, task.getImportance());
+      ps.setDate(4, task.getLimit_date());
       ps.setBoolean(5, (Boolean) task.isDone());
       ps.setInt(6, task.getId_task());
       return ps.executeUpdate() != 0;
@@ -86,5 +84,22 @@ public class TaskDAOImplement implements DAO<Task> {
       ex.printStackTrace(System.out);
     }
     return false;
+  }
+
+  public String importance(String importance) {
+    switch (importance) {
+      case "0":
+        return "Tomate tu tiempo";
+      case "1":
+        return "No es importante";
+      case "2":
+        return "Regular";
+      case "3":
+        return "Es importante";
+      case "4":
+        return "Urgente";
+      default:
+        return "";
+    }
   }
 }

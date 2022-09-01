@@ -20,7 +20,7 @@ import java.util.List;
 @MultipartConfig
 public class TaskApi extends HttpServlet {
   private static DAO<Task> taskDAO;
-  private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
+  private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("MM-dd-yyyy").create();
 
   public void init() {
     taskDAO = new TaskDAOImplement();

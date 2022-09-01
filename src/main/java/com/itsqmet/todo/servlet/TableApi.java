@@ -41,7 +41,6 @@ public class TableApi extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    System.out.println(data);
     Table table = GSON.fromJson(data, Table.class);
     HttpSession session = req.getSession(); 
     table.setId_user((Integer) session.getAttribute("id_user"));

@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 public class Task {
   private int id_task;
   private int id_table;
-  private int importance;
+  private String importance;
   private String title;
   private String description;
   private Timestamp created_at;
@@ -69,11 +69,11 @@ public class Task {
     this.done = done;
   }
 
-  public int getImportance() {
+  public String getImportance() {
     return importance;
   }
 
-  public void setImportance(int importance) {
+  public void setImportance(String importance) {
     this.importance = importance;
   }
 }
