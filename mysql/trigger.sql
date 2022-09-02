@@ -47,3 +47,4 @@ CASE
     WHEN NEW.importance = "Urgente" THEN SET NEW.importance = 4;
 END CASE;
 END $$
+
