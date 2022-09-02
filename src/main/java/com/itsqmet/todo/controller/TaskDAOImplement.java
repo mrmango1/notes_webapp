@@ -3,6 +3,7 @@ package com.itsqmet.todo.controller;
 import com.itsqmet.todo.config.CDB;
 import com.itsqmet.todo.model.Task;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,10 +35,9 @@ public class TaskDAOImplement implements DAO<Task> {
   public List<Task> read(int id_table) {
     List<Task> listTask = new ArrayList<>();
     try {
-      String query = "SELECT id_task,title,description,stringImportance(importance),limit_date,done FROM task where id_table=?";
-      PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, id_table);
-      ResultSet rs = ps.executeQuery();
+      CallableStatement cs = con.prepareCall("{call notesDetail(?)}");
+      cs.setInt(1, id_table);
+      ResultSet rs = cs.executeQuery();
       while (rs.next()) {
         Task task = new Task();
         task.setId_task(rs.getInt(1));
@@ -46,6 +46,7 @@ public class TaskDAOImplement implements DAO<Task> {
         task.setImportance(rs.getString(4));
         task.setLimit_date(rs.getDate(5));
         task.setDone(rs.getBoolean(6));
+        task.setName(rs.getString(7));
         listTask.add(task);
       }
     } catch (Exception ex) {

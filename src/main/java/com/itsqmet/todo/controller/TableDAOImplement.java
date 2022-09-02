@@ -3,6 +3,7 @@ package com.itsqmet.todo.controller;
 import com.itsqmet.todo.config.CDB;
 import com.itsqmet.todo.model.Table;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,10 +33,9 @@ public class TableDAOImplement implements DAO<Table>{
   public List<Table> read(int id_user) {
     List<Table> listTable = new ArrayList<>();
     try {
-      String query = "SELECT id_table, title, description, stringColors(color) from `table` where id_user=?";
-      PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, id_user);
-      ResultSet rs = ps.executeQuery();
+      CallableStatement cs = con.prepareCall("{call userTables(?)}");
+      cs.setInt(1, id_user);
+      ResultSet rs = cs.executeQuery();
       while (rs.next()) {
         Table table = new Table();
         table.setId_table(rs.getInt(1));

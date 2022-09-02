@@ -90,6 +90,13 @@
               DESCRIPCION
             </th>
             <th
+            data-field="name"
+            data-align="center"
+            data-valign="middle"
+          >
+            ASUNTO
+          </th>
+            <th
               data-field="importance"
               data-valign="middle"
               data-align="center"

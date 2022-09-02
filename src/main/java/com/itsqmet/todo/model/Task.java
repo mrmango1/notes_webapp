@@ -9,6 +9,7 @@ public class Task {
   private String importance;
   private String title;
   private String description;
+  private String name;
   private Timestamp created_at;
   private Date limit_date;
   private boolean done;
@@ -75,5 +76,11 @@ public class Task {
 
   public void setImportance(String importance) {
     this.importance = importance;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 }
