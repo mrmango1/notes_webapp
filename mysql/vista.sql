@@ -6,27 +6,26 @@ SELECT count(id_user)
 FROM
     `user`;
 
+# Crear una vista que muestre cuantas notas tiene cada tabla
 
-# Crear una vista que muestre el nombre del usuario con mayor contidad de notas
+CREATE VIEW numberNotes
+AS
+SELECT Tbl.id_table, count(T.id_task)
+FROM
+    `table` Tbl
+JOIN task T
+ON Tbl.id_table=T.id_table
+GROUP BY Tbl.id_table;
+
+# Crear una vista que muestre los 5 usuarios con mas notas
 
 CREATE VIEW userWithMoreNotes
 AS
-SELECT firstname, lastname, count(id_task)
+SELECT concat(U.firstname," ",U.lastname) as "Name", count(T.id_task) as "Task Number"
 FROM
-    `user`
-    JOIN `table` ON `user`.id_user = `table`.id_user
-    JOIN `task` ON `task`.id_table = `task`.id_table
-GROUP BY `user`.id_user
-ORDER BY count(id_task) DESC limit 5;
-
-# Crear una vista que muestre los asuntos mas utilizados por los usuarios
-
-CREATE VIEW maxAsuntos
-AS
-SELECT asunto, count(id)
-FROM
-    `notes`
-GROUP BY
-    asunto
-ORDER BY
-    count(id) DESC;
+    `table` Tbl
+JOIN task T
+ON Tbl.id_table=T.id_table
+JOIN user U
+on U.id_user=Tbl.id_user
+GROUP BY Tbl.id_user limit 5;
