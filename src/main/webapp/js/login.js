@@ -29,7 +29,7 @@ const register = (event, form) => {
       if (response.ok) {
         window.location.assign("./login");
       } else {
-        alert("Error: " + response.statusText);
+        alert("Error: Correo ya registrado");
       }
     })
   }
