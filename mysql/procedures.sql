@@ -10,11 +10,12 @@ call userTables(id)
 
 # Crear un procedimiento que verifique si un correo ya existe en la base de datos
 DELIMITER &&
-CREATE PROCEDURE Register (userFirstName varchar(40) ,userLastName varchar(45) ,userEmailvarchar varchar(45),userPwd varchar(45))
+CREATE PROCEDURE Register (userFirstName varchar(40) ,userLastName varchar(45) ,userEmail varchar(45),userPwd varchar(45))
 BEGIN
-  INSERT INTO users (firstname,lastname,email,password)
-  VALUES (userFirstName,userLastName,userEmail,md5(userPwd))
-  WHERE NOT EXISTS (SELECT email FROM users WHERE email=userEmail);
+  INSERT INTO user (firstname,lastname,email,password)
+  SELECT userFirstName,userLastName,userEmail,md5(userPwd)
+  FROM dual
+  WHERE NOT EXISTS (SELECT email FROM user WHERE email=userEmail);
 END &&
 DELIMITER ;
 

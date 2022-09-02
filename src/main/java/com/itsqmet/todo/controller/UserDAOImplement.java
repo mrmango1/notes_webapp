@@ -3,6 +3,7 @@ package com.itsqmet.todo.controller;
 import com.itsqmet.todo.config.CDB;
 import com.itsqmet.todo.model.User;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,13 +17,12 @@ public class UserDAOImplement implements DAO<User> {
   @Override
   public boolean create(User user) {
     try {
-      String query = "INSERT INTO user(firstname, lastname, email, password) values(?,?,?,MD5(?))";
-      PreparedStatement ps = con.prepareStatement(query);
-      ps.setString(1, user.getFirstname());
-      ps.setString(2, user.getLastname());
-      ps.setString(3, user.getEmail());
-      ps.setString(4, user.getPassword());
-      return ps.executeUpdate() != 0;
+      CallableStatement cs = con.prepareCall("{call Register(?,?,?,?)}");
+      cs.setString(1, user.getFirstname());
+      cs.setString(2, user.getLastname());
+      cs.setString(3, user.getEmail());
+      cs.setString(4, user.getPassword());
+      return cs.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
     }
