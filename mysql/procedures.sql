@@ -2,7 +2,7 @@
 DELIMITER &&  
 CREATE PROCEDURE userTables (id int)
 BEGIN    
-  select * from `table` where id_user=id;
+  select id_table, title, description, stringColors(color) from `table` where id_user=id;
 END &&  
 DELIMITER ;   
 
