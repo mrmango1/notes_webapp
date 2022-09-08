@@ -55,7 +55,7 @@
               role="tabpanel"
               aria-labelledby="tab-login"
             >
-              <form method="post" action="./login" style="margin: 0">
+              <form onsubmit="login(event,this)" action="./login" style="margin: 0">
                 <p class="text-center mt-3">Por favor, ingrese a su cuenta</p>
 
                 <!-- Email input -->

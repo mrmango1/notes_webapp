@@ -44,10 +44,8 @@ public class Login extends HttpServlet {
       lastName.setMaxAge(30 * 60);
       res.addCookie(firstName);
       res.addCookie(lastName);
-      res.sendRedirect("index.jsp");
     } else {
-      PrintWriter out = res.getWriter();
-      out.println("<script>alert('Usuario o contraseña Incorrectas')</script>");
+      res.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }
   }
   // Register method
@@ -67,11 +65,8 @@ public class Login extends HttpServlet {
       lastName.setMaxAge(30 * 60);
       res.addCookie(firstName);
       res.addCookie(lastName);
-      res.sendRedirect("index.jsp");
     } else {
-      PrintWriter out = res.getWriter();
-      out.println("<script>alert('El correo electronico ingresado ya existe!')</script>");
-      res.sendRedirect("index.jsp");
+      res.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }
   }
 }

@@ -15,21 +15,34 @@ const checkPassword = (form) => {
   return true
 }
 
+const login = (event, form) => {
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+  }).then((response) => {
+    if (response.ok) {
+      window.location.assign("./index.jsp")
+    } else {
+      alert("Error: Correo o contraseña incorrectos")
+    }
+  })
+  event.preventDefault()
+}
+
 const register = (event, form) => {
   if (!checkPassword(form)) {
     alert("Password and confirm password are not equal")
     event.preventDefault()
     return
-  }
-  else{
+  } else {
     fetch(form.action, {
       method: "POST",
       body: clearDataForm(form, "confirmPassword", "observation"),
     }).then((response) => {
       if (response.ok) {
-        window.location.assign("./login");
+        window.location.assign("./login")
       } else {
-        alert("Error: Correo ya registrado");
+        alert("Error: Correo ya registrado")
       }
     })
   }

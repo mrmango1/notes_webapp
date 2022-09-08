@@ -30,6 +30,20 @@
     <script src="./js/script.js"></script>
   </head>
   <body>
+    <style>
+      h1 {
+        font-family: "Coolvetica", cursive;
+        font-size: 50px;
+      }
+      h3{
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin: 1.5rem 0;
+      }
+      h4{
+        font-weight: 700;
+      }
+    </style>
     <%@include file="templates/other/handlerSession.jsp" %> <%@include
     file="templates/other/navbar.jsp" %>
     <main class="container">
@@ -37,7 +51,7 @@
         <h1>Acerca de:</h1>
         <h3>Este projecto.</h3>
       </header>
-      <div class="container-fluid" style="display: flex; align-items: center">
+      <div class="container-fluid" style="display: flex; align-items: center;justify-content: space-around;">
         <div>
           <h4>OBJETIVO GENERAL</h4>
           <p>
