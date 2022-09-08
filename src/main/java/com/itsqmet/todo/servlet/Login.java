@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
       lastName.setMaxAge(30 * 60);
       res.addCookie(firstName);
       res.addCookie(lastName);
+      res.sendRedirect("index.jsp");
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }
