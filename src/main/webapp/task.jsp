@@ -121,7 +121,7 @@
             <th
               data-field="operate"
               data-formatter="operateFormatter"
-              data-width="222"
+              data-width="220"
               data-align="center"
               data-valign="middle"
             >

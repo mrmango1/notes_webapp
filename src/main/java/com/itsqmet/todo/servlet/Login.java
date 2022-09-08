@@ -54,7 +54,6 @@ public class Login extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
     req.setCharacterEncoding("UTF-8");
     User userLogin = loginDAO.register();
-    System.out.println(userLogin);
     if (userLogin != null) {
       HttpSession session = req.getSession();
       session.setAttribute("id_user", userLogin.getId_user());

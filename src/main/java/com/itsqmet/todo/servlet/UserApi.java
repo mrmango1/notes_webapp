@@ -41,7 +41,6 @@ public class UserApi extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
-    System.out.println(data);
     User user = GSON.fromJson(data, User.class);
     if (userDAO.create(user)) {
       res.setStatus(HttpServletResponse.SC_CREATED);

@@ -4,6 +4,7 @@ let $table = $("#table")
 
 function operateFormatter(value, row, index) {
   return `<button type='button'
+          style="width: 90px;"
             class='btn btn-warning actionBtn' 
             data-bs-toggle='modal' 
             data-bs-target='#updateModal'
@@ -12,6 +13,7 @@ function operateFormatter(value, row, index) {
     </button>
     <button 
             type='button' 
+            style="width: 90px;"
             class='btn btn-danger actionBtn'
             data-bs-toggle="modal" 
             data-bs-target="#deleteDialog"
@@ -49,9 +51,9 @@ const getUpdateData = (element) => {
     .getElementsByClassName("update-control")
   uForm[0].value = updateData[0].innerHTML
   uForm[1].value = updateData[1].innerHTML
-  uForm[2].value = updateData[2].innerHTML
-  uForm[3].valueAsDate = new Date(updateData[3].innerHTML)
-  updateData[4].getElementsByTagName("input")[0].checked
+  uForm[2].value = updateData[3].innerHTML
+  uForm[3].valueAsDate = new Date(updateData[4].innerHTML)
+  updateData[5].getElementsByTagName("input")[0].checked
     ? (uForm[4].checked = true)
     : (uForm[4].checked = false)
 }

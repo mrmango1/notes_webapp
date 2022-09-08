@@ -67,7 +67,7 @@ public class TaskApi extends HttpServlet {
     data = data.replaceAll("[\\[\\]]", "");
     Task task = GSON.fromJson(data, Task.class);
     if (taskDAO.delete(task)) {
-      res.setStatus(HttpServletResponse.SC_CREATED);
+      res.setStatus(HttpServletResponse.SC_OK);
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }

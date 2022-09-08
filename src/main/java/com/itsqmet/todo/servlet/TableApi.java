@@ -67,7 +67,7 @@ public class TableApi extends HttpServlet {
     data = data.replaceAll("[\\[\\]]", "");
     Table table = GSON.fromJson(data, Table.class);
     if (tableDAO.delete(table)) {
-      res.setStatus(HttpServletResponse.SC_CREATED);
+      res.setStatus(HttpServletResponse.SC_OK);
     } else {
       res.sendError(HttpServletResponse.SC_BAD_REQUEST);
     }

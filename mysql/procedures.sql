@@ -25,7 +25,7 @@ DELIMITER ;
 DELIMITER &&
 CREATE PROCEDURE notesDetail (id int)
 BEGIN
-select T.id_task, T.title, T.description, T.importance, T.limit_date, T.done, TP.name
+select T.id_task, T.title, T.description, stringImportance(T.importance), T.limit_date, T.done, TP.name
 from task T
 left join topic_has_task ThT
 on T.id_task = ThT.id_task
