@@ -1,5 +1,6 @@
 let idToDelete = 0
 let idToupdate = 0
+let id_task = 4
 let $table = $("#table")
 
 function operateFormatter(value, row, index) {
@@ -96,6 +97,37 @@ function doPost(event, form) {
   }).then((response) => {
     if (response.ok) {
       successToast()
+    } else {
+      errorToast()
+    }
+  })
+  event.preventDefault()
+}
+
+// function getIdToTaskTopic() {
+//   let id_topic_position = document.getElementById('table').querySelector("tbody").querySelectorAll("tr").length
+//   id_task = document.getElementById('table').querySelector("tbody").querySelectorAll("tr")[id_topic_position].getAttribute("data-uniqueid")
+// }
+
+function doPostTopic(event, form) {
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+  }).then((response) => {
+    if (response.ok) {
+      let formData = new FormData()
+      formData.append("id_task", id_task)
+      fetch("./api/taskTopic", {
+        method: "POST",
+        body: formData,
+      }).then((response) => {
+        if (response.ok) {
+          id_task += 1
+          successToast()
+        } else {
+          errorToast()
+        }
+      })
     } else {
       errorToast()
     }

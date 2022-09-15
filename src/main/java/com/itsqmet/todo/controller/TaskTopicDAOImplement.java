@@ -6,6 +6,7 @@ import com.itsqmet.todo.model.TaskTopic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,17 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
   @Override
   public boolean create(TaskTopic taskTopic) {
     try {
-      String query = "INSERT INTO task_has_topic(id_task, id_table, id_topic) values(?,?,?)";
-      PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, taskTopic.getId_task());
-      ps.setInt(2, taskTopic.getId_table());
-      ps.setInt(3, taskTopic.getId_topic());
+      String query1 = "SELECT LAST_INSERT_ID()";
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery(query1);
+      Integer id_topic = null;
+      while (rs.next()) {
+        id_topic = rs.getInt(1);
+      }
+      String query2 = "INSERT INTO topic_has_task(id_task, id_topic) values(?,?)";
+      PreparedStatement ps = con.prepareStatement(query2);
+      ps.setInt(2, taskTopic.getId_task());
+      ps.setInt(1, id_topic);
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);

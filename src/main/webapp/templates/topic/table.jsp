@@ -19,6 +19,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          onclick="getIdToTaskTopic()"
         ></button>
       </div>
       <div class="modal-body">
