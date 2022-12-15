@@ -9,8 +9,8 @@ public class CDB {
   static {
     String databaseName = "to-do";
     String url = "jdbc:mysql://localhost:3306/" + databaseName;
-    String user = "demo_java";
-    String password = "1234";
+    String user = "root";
+    String password = "PAU534297OK";
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
       con = DriverManager.getConnection(url, user, password);
