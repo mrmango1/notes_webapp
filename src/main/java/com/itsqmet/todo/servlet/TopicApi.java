@@ -22,24 +22,27 @@ public class TopicApi extends HttpServlet {
   private static DAO<Topic> topicDAO;
   private static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
+  @Override
   public void init() {
-    topicDAO = new TopicDAOImplement();
+	  topicDAO = new TopicDAOImplement();
   }
 
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_table = (Integer) session.getAttribute("id_table");
-    List<Topic> tableList = topicDAO.read(id_table);
+    int idTable = (Integer) session.getAttribute("id_table");
+    List<Topic> tableList = topicDAO.read(idTable);
     String json = GSON.toJson(tableList);
     out.write(json);
   }
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
-    data = data.replaceAll("[\\[\\]]", "");
+    data = data.replaceAll("[a[*]c]", "");
     Topic topic = GSON.fromJson(data, Topic.class);
     HttpSession session = req.getSession();
     topic.setId_table((Integer) session.getAttribute("id_table"));
