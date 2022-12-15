@@ -26,16 +26,18 @@ public class TaskApi extends HttpServlet {
     taskDAO = new TaskDAOImplement();
   }
 
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_table = (Integer) session.getAttribute("id_table");
-    List<Task> taskList = taskDAO.read(id_table);
+    int idTable = (Integer) session.getAttribute("id_table");
+    List<Task> taskList = taskDAO.read(idTable);
     String json = GSON.toJson(taskList);
     out.write(json);
   }
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
@@ -50,6 +52,7 @@ public class TaskApi extends HttpServlet {
     }
   }
 
+  @Override
   protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
@@ -62,6 +65,7 @@ public class TaskApi extends HttpServlet {
     }
   }
 
+  @Override
   protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
