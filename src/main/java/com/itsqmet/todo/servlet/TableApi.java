@@ -27,16 +27,18 @@ public class TableApi extends HttpServlet {
   private static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
 
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_user = (Integer) session.getAttribute("id_user");
-    List<Table> tableList = tableDAO.read(id_user);
+    int idUser = (Integer) session.getAttribute("id_user");
+    List<Table> tableList = tableDAO.read(idUser);
     String json = GSON.toJson(tableList);
     out.write(json);
   }
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
@@ -51,6 +53,7 @@ public class TableApi extends HttpServlet {
     }
   }
 
+  @Override
   protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
@@ -62,6 +65,7 @@ public class TableApi extends HttpServlet {
     }
   }
 
+  @Override
   protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
