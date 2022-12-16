@@ -4,12 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.itsqmet.todo.config.CDB;
 import com.itsqmet.todo.model.User;
-import com.mysql.cj.xdevapi.Statement;
 
 public class UserDAOImplement implements DAO<User> {
 
@@ -17,10 +17,7 @@ public class UserDAOImplement implements DAO<User> {
 	CallableStatement cs = null;
 	ResultSet rs = null;
 	PreparedStatement ps = null;
-	Statement st =null;
-	st.createdStatement;
-	
-	rs=st.executeQuery();
+	Statement st = null;
 
 	@Override
 	public boolean create(User user) {
@@ -40,9 +37,11 @@ public class UserDAOImplement implements DAO<User> {
 	@Override
 	public List<User> read(int idUser) {
 		List<User> listUser = new ArrayList<>();
+
 		try {
 			String query = "SELECT * FROM user";
-			rs = con.createStatement().executeQuery(query);
+			st = con.createStatement();
+			rs = st.executeQuery(query);
 			while (rs.next()) {
 				User user = new User();
 				user.setIdUser(rs.getInt(1));
@@ -54,12 +53,6 @@ public class UserDAOImplement implements DAO<User> {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
 		}
 		return listUser;
 	}
