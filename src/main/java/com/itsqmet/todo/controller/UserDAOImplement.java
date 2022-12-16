@@ -30,14 +30,14 @@ public class UserDAOImplement implements DAO<User> {
   }
 
   @Override
-  public List<User> read(int id_user) {
+  public List<User> read(int idUser) {
     List<User> listUser = new ArrayList<>();
     try {
       String query = "SELECT * FROM user";
       ResultSet rs = con.createStatement().executeQuery(query);
       while (rs.next()) {
         User user = new User();
-        user.setId_user(rs.getInt(1));
+        user.setIdUser(rs.getInt(1));
         user.setFirstname(rs.getString(2));
         user.setLastname(rs.getString(3));
         user.setPassword(rs.getString(4));
@@ -59,7 +59,7 @@ public class UserDAOImplement implements DAO<User> {
       ps.setString(2, user.getLastname());
       ps.setString(3, user.getEmail());
       ps.setString(4, user.getPassword());
-      ps.setInt(5, user.getId_user());
+      ps.setInt(5, user.getIdUser());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -72,7 +72,7 @@ public class UserDAOImplement implements DAO<User> {
     try {
       String query = "DELETE FROM user where id_user=?";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, user.getId_user());
+      ps.setInt(1, user.getIdUser());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);

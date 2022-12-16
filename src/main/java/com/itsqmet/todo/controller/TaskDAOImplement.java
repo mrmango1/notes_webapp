@@ -19,11 +19,11 @@ public class TaskDAOImplement implements DAO<Task> {
       String query = "INSERT INTO task(id_table, title, description, importance, " +
           "limit_date) values(?,?,?,intImportance(?),?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, task.getId_table());
+      ps.setInt(1, task.getIdTable());
       ps.setString(2, task.getTitle());
       ps.setString(3, task.getDescription());
       ps.setString(4, task.getImportance());
-      ps.setDate(5, task.getLimit_date());
+      ps.setDate(5, task.getLimitDate());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -32,19 +32,19 @@ public class TaskDAOImplement implements DAO<Task> {
   }
 
   @Override
-  public List<Task> read(int id_table) {
+  public List<Task> read(int idTable) {
     List<Task> listTask = new ArrayList<>();
     try {
       CallableStatement cs = con.prepareCall("{call notesDetail(?)}");
-      cs.setInt(1, id_table);
+      cs.setInt(1, idTable);
       ResultSet rs = cs.executeQuery();
       while (rs.next()) {
         Task task = new Task();
-        task.setId_task(rs.getInt(1));
+        task.setIdTask(rs.getInt(1));
         task.setTitle(rs.getString(2));
         task.setDescription(rs.getString(3));
         task.setImportance(rs.getString(4));
-        task.setLimit_date(rs.getDate(5));
+        task.setLimitDate(rs.getDate(5));
         task.setDone(rs.getBoolean(6));
         task.setName(rs.getString(7));
         listTask.add(task);
@@ -64,9 +64,9 @@ public class TaskDAOImplement implements DAO<Task> {
       ps.setString(1, task.getTitle());
       ps.setString(2, task.getDescription());
       ps.setString(3, task.getImportance());
-      ps.setDate(4, task.getLimit_date());
+      ps.setDate(4, task.getLimitDate());
       ps.setBoolean(5, (Boolean) task.isDone());
-      ps.setInt(6, task.getId_task());
+      ps.setInt(6, task.getIdTask());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -79,7 +79,7 @@ public class TaskDAOImplement implements DAO<Task> {
     try {
       String query = "DELETE FROM `task` where id_task=?";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, task.getId_task());
+      ps.setInt(1, task.getIdTask());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);

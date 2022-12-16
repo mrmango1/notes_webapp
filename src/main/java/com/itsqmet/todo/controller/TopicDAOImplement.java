@@ -17,7 +17,7 @@ public class TopicDAOImplement implements DAO<Topic> {
     try {
       String query = "INSERT INTO topic(id_table, name, description) values(?,?,?)";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, task.getId_table());
+      ps.setInt(1, task.getIdTable());
       ps.setString(2, task.getName());
       ps.setString(3, task.getDescription());
       return ps.executeUpdate() != 0;
@@ -28,16 +28,16 @@ public class TopicDAOImplement implements DAO<Topic> {
   }
 
   @Override
-  public List<Topic> read(int id_table) {
+  public List<Topic> read(int idTable) {
     List<Topic> listTopic = new ArrayList<>();
     try {
       String query = "SELECT id_topic, name , description FROM topic where id_table = ?";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, id_table);
+      ps.setInt(1, idTable);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
         Topic topic = new Topic();
-        topic.setId_topic(rs.getInt(1));
+        topic.setIdTopic(rs.getInt(1));
         topic.setName(rs.getString(2));
         topic.setDescription(rs.getString(3));
         listTopic.add(topic);
@@ -55,7 +55,7 @@ public class TopicDAOImplement implements DAO<Topic> {
       PreparedStatement ps = con.prepareStatement(query);
       ps.setString(1, task.getName());
       ps.setString(2, task.getDescription());
-      ps.setInt(3, task.getId_topic());
+      ps.setInt(3, task.getIdTopic());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
@@ -68,7 +68,7 @@ public class TopicDAOImplement implements DAO<Topic> {
     try {
       String query = "DELETE FROM topic where id_topic=?";
       PreparedStatement ps = con.prepareStatement(query);
-      ps.setInt(1, topic.getId_topic());
+      ps.setInt(1, topic.getIdTopic());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);

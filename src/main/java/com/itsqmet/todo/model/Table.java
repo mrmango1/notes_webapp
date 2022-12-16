@@ -1,18 +1,18 @@
 package com.itsqmet.todo.model;
 
 public class Table {
-  private int id_table;
-  private int id_user;
+  private int idTable;
+  private int idUser;
   private String title;
   private String description;
   private String color;
 
-  public int getId_table() {
-    return id_table;
+  public int getIdTable() {
+    return idTable;
   }
 
-  public void setId_table(int id_table) {
-    this.id_table = id_table;
+  public void setIdTable(int idTable) {
+    this.idTable = idTable;
   }
 
   public String getTitle() {
@@ -31,12 +31,12 @@ public class Table {
     this.description = description;
   }
 
-  public int getId_user() {
-    return id_user;
+  public int getIdUser() {
+    return idUser;
   }
 
-  public void setId_user(int id_user) {
-    this.id_user = id_user;
+  public void setIdUser(int idUser) {
+    this.idUser = idUser;
   }
 
   public String getColor() {

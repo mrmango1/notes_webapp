@@ -20,6 +20,8 @@ import java.util.List;
 @MultipartConfig
 public class TableApi extends HttpServlet {
   private static DAO<Table> tableDAO;
+  
+  private String fDate = "[\\\\[\\\\]]";
 
   public void init() {
     tableDAO = new TableDAOImplement();
@@ -32,7 +34,7 @@ public class TableApi extends HttpServlet {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int idUser = (Integer) session.getAttribute("id_user");
+    int idUser = (Integer) session.getAttribute("idUser");
     List<Table> tableList = tableDAO.read(idUser);
     String json = GSON.toJson(tableList);
     out.write(json);
@@ -42,10 +44,10 @@ public class TableApi extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
-    data = data.replaceAll("[\\[\\]]", "");
+    data = data.replaceAll(fDate, "");
     Table table = GSON.fromJson(data, Table.class);
     HttpSession session = req.getSession(); 
-    table.setId_user((Integer) session.getAttribute("id_user"));
+    table.setIdUser((Integer) session.getAttribute("idUser"));
     if (tableDAO.create(table)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {
@@ -56,7 +58,7 @@ public class TableApi extends HttpServlet {
   @Override
   protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
-    data = data.replaceAll("[\\[\\]]", "");
+    data = data.replaceAll(fDate, "");
     Table table = GSON.fromJson(data, Table.class);
     if (tableDAO.update(table)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
@@ -68,7 +70,7 @@ public class TableApi extends HttpServlet {
   @Override
   protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
     String data = GSON.toJson(req.getParameterMap());
-    data = data.replaceAll("[\\[\\]]", "");
+    data = data.replaceAll(fDate, "");
     Table table = GSON.fromJson(data, Table.class);
     if (tableDAO.delete(table)) {
       res.setStatus(HttpServletResponse.SC_OK);

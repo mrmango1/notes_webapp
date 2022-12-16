@@ -44,7 +44,7 @@ public class TaskApi extends HttpServlet {
     data = data.replaceAll("[\\[\\]]", "");
     Task task = GSON.fromJson(data, Task.class);
     HttpSession session = req.getSession();
-    task.setId_table((Integer) session.getAttribute("id_table"));
+    task.setIdTable((Integer) session.getAttribute("id_table"));
     if (taskDAO.create(task)) {
       res.setStatus(HttpServletResponse.SC_CREATED);
     } else {

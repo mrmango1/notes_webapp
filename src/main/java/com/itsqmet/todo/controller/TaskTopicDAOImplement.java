@@ -19,14 +19,14 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
       String query1 = "SELECT LAST_INSERT_ID()";
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery(query1);
-      Integer id_topic = null;
+      Integer idTopic = null;
       while (rs.next()) {
-        id_topic = rs.getInt(1);
+        idTopic = rs.getInt(1);
       }
       String query2 = "INSERT INTO topic_has_task(id_task, id_topic) values(?,?)";
       PreparedStatement ps = con.prepareStatement(query2);
       ps.setInt(2, taskTopic.getId_task());
-      ps.setInt(1, id_topic);
+      ps.setInt(1, idTopic);
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace(System.out);
