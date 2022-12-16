@@ -17,7 +17,10 @@ public class UserDAOImplement implements DAO<User> {
 	CallableStatement cs = null;
 	ResultSet rs = null;
 	PreparedStatement ps = null;
-	Statement st = null;
+	Statement st =null;
+	st.createdStatement;
+	
+	rs=st.executeQuery();
 
 	@Override
 	public boolean create(User user) {
