@@ -12,12 +12,14 @@ import java.util.List;
 
 public class TableDAOImplement implements DAO<Table>{
   static Connection con = CDB.getConnection();
+  PreparedStatement ps = null;
+  CallableStatement cs =null;
 
   @Override
   public boolean create(Table table) {
     try {
       String query = "INSERT INTO `table`(id_user, title, description, color) values(?,?,?,?)";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setInt(1, table.getIdUser());
       ps.setString(2, table.getTitle());
       ps.setString(3, table.getDescription());
@@ -33,7 +35,7 @@ public class TableDAOImplement implements DAO<Table>{
   public List<Table> read(int idUser) {
     List<Table> listTable = new ArrayList<>();
     try {
-      CallableStatement cs = con.prepareCall("{call userTables(?)}");
+      cs = con.prepareCall("{call userTables(?)}");
       cs.setInt(1, idUser);
       ResultSet rs = cs.executeQuery();
       while (rs.next()) {
@@ -54,7 +56,7 @@ public class TableDAOImplement implements DAO<Table>{
   public boolean update(Table table) {
     try {
       String query = "UPDATE `table` SET title=?,description=?,color=? where id_table=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setString(1, table.getTitle());
       ps.setString(2, table.getDescription());
       ps.setString(3, table.getColor());
@@ -70,7 +72,7 @@ public class TableDAOImplement implements DAO<Table>{
   public boolean delete(Table table) {
     try {
       String query = "DELETE FROM `table` where id_table=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setInt(1, table.getIdTable());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
