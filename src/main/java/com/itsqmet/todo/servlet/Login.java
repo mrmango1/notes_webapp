@@ -5,14 +5,14 @@ import com.google.gson.GsonBuilder;
 import com.itsqmet.todo.controller.LoginDAO;
 import com.itsqmet.todo.controller.LoginDAOImplement;
 import com.itsqmet.todo.model.User;
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 @WebServlet("/login")
 @MultipartConfig

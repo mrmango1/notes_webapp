@@ -12,13 +12,14 @@ import java.util.List;
 
 public class TaskDAOImplement implements DAO<Task> {
   static Connection con = CDB.getConnection();
-
+  PreparedStatement ps = null; 
+  CallableStatement cs =null;
   @Override
   public boolean create(Task task) {
     try {
       String query = "INSERT INTO task(id_table, title, description, importance, " +
           "limit_date) values(?,?,?,intImportance(?),?)";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setInt(1, task.getIdTable());
       ps.setString(2, task.getTitle());
       ps.setString(3, task.getDescription());
@@ -26,7 +27,7 @@ public class TaskDAOImplement implements DAO<Task> {
       ps.setDate(5, task.getLimitDate());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }
@@ -35,7 +36,7 @@ public class TaskDAOImplement implements DAO<Task> {
   public List<Task> read(int idTable) {
     List<Task> listTask = new ArrayList<>();
     try {
-      CallableStatement cs = con.prepareCall("{call notesDetail(?)}");
+      cs = con.prepareCall("{call notesDetail(?)}");
       cs.setInt(1, idTable);
       ResultSet rs = cs.executeQuery();
       while (rs.next()) {
@@ -50,7 +51,7 @@ public class TaskDAOImplement implements DAO<Task> {
         listTask.add(task);
       }
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return listTask;
   }
@@ -60,16 +61,16 @@ public class TaskDAOImplement implements DAO<Task> {
     try {
       String query = "UPDATE `task` SET title=?,description=?,importance=intImportance(?)," +
           "limit_date=?,done=? where id_task=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setString(1, task.getTitle());
       ps.setString(2, task.getDescription());
       ps.setString(3, task.getImportance());
       ps.setDate(4, task.getLimitDate());
-      ps.setBoolean(5, (Boolean) task.isDone());
+      ps.setBoolean(5, task.isDone());
       ps.setInt(6, task.getIdTask());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }
@@ -78,11 +79,11 @@ public class TaskDAOImplement implements DAO<Task> {
   public boolean delete(Task task) {
     try {
       String query = "DELETE FROM `task` where id_task=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setInt(1, task.getIdTask());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }

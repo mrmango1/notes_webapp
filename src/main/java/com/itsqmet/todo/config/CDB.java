@@ -21,7 +21,7 @@ public class CDB {
 			con = DriverManager.getConnection(url, user, password);
 		} catch (Exception ex) {
 
-			ex.printStackTrace(System.out);
+			ex.printStackTrace();
 		}
 	}
 

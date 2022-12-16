@@ -13,18 +13,21 @@ import java.util.List;
 public class UserDAOImplement implements DAO<User> {
 
   static Connection con = CDB.getConnection();
+  CallableStatement cs =null;
+  ResultSet rs =null;
+  PreparedStatement ps =null;
 
   @Override
   public boolean create(User user) {
     try {
-      CallableStatement cs = con.prepareCall("{call Register(?,?,?,?)}");
+      cs = con.prepareCall("{call Register(?,?,?,?)}");
       cs.setString(1, user.getFirstname());
       cs.setString(2, user.getLastname());
       cs.setString(3, user.getEmail());
       cs.setString(4, user.getPassword());
       return cs.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }
@@ -34,7 +37,7 @@ public class UserDAOImplement implements DAO<User> {
     List<User> listUser = new ArrayList<>();
     try {
       String query = "SELECT * FROM user";
-      ResultSet rs = con.createStatement().executeQuery(query);
+      rs = con.createStatement().executeQuery(query);
       while (rs.next()) {
         User user = new User();
         user.setIdUser(rs.getInt(1));
@@ -45,7 +48,7 @@ public class UserDAOImplement implements DAO<User> {
         listUser.add(user);
       }
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return listUser;
   }
@@ -54,7 +57,7 @@ public class UserDAOImplement implements DAO<User> {
   public boolean update(User user) {
     try {
       String query = "UPDATE user SET firstname=?,lastname=?,email=?,password=? where id_user=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setString(1, user.getFirstname());
       ps.setString(2, user.getLastname());
       ps.setString(3, user.getEmail());
@@ -62,7 +65,7 @@ public class UserDAOImplement implements DAO<User> {
       ps.setInt(5, user.getIdUser());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }
@@ -71,11 +74,11 @@ public class UserDAOImplement implements DAO<User> {
   public boolean delete(User user) {
     try {
       String query = "DELETE FROM user where id_user=?";
-      PreparedStatement ps = con.prepareStatement(query);
+      ps = con.prepareStatement(query);
       ps.setInt(1, user.getIdUser());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
-      ex.printStackTrace(System.out);
+      ex.printStackTrace();
     }
     return false;
   }

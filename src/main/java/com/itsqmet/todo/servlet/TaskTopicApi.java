@@ -32,7 +32,7 @@ public class TaskTopicApi extends HttpServlet {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
 
-    data = data.replaceAll("[\\[\\]]", "");
+    data = data.replaceAll(formatDate, "");
     System.out.println(data);
     TaskTopic taskTopic = GSON.fromJson(data, TaskTopic.class);
     if (topicDAO.create(taskTopic)) {
@@ -45,7 +45,7 @@ public class TaskTopicApi extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String data = GSON.toJson(req.getParameterMap());
-		data = data.replaceAll("[\\[\\]]", "");
+		data = data.replaceAll(formatDate, "");
 		TaskTopic taskTopic = GSON.fromJson(data, TaskTopic.class);
 		if (topicDAO.update(taskTopic)) {
 			res.setStatus(HttpServletResponse.SC_CREATED);
@@ -57,7 +57,7 @@ public class TaskTopicApi extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String data = GSON.toJson(req.getParameterMap());
-		data = data.replaceAll("[\\[\\]]", "");
+		data = data.replaceAll(formatDate, "");
 		TaskTopic taskTopic = GSON.fromJson(data, TaskTopic.class);
 		if (topicDAO.delete(taskTopic)) {
 			res.setStatus(HttpServletResponse.SC_CREATED);

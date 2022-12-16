@@ -2,6 +2,7 @@ package com.itsqmet.todo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -22,7 +23,7 @@ import jakarta.servlet.http.HttpSession;
 public class TopicApi extends HttpServlet {
 	private static DAO<Topic> topicDAO;
 	private static final Gson GSON = new GsonBuilder().serializeNulls().create();
-
+	
 
 	public void init() {
 		topicDAO = new TopicDAOImplement();

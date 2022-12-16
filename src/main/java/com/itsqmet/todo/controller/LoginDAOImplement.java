@@ -6,7 +6,7 @@ import com.itsqmet.todo.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 public class LoginDAOImplement implements LoginDAO<User> {
 	static Connection con = CDB.getConnection();
