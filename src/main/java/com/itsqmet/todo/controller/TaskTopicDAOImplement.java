@@ -27,7 +27,7 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
       }
       String query2 = "INSERT INTO topic_has_task(id_task, id_topic) values(?,?)";
       ps = con.prepareStatement(query2);
-      ps.setInt(2, taskTopic.getId_task());
+      ps.setInt(2, taskTopic.getIdTask());
       ps.setInt(1, idTopic);
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
@@ -44,9 +44,9 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
       rs = con.createStatement().executeQuery(query);
       while (rs.next()) {
         TaskTopic topic = new TaskTopic();
-        topic.setId_task(rs.getInt(1));
-        topic.setId_table(rs.getInt(2));
-        topic.setId_topic(rs.getInt(3));
+        topic.setIdTask(rs.getInt(1));
+        topic.setIdTable(rs.getInt(2));
+        topic.setIdTopic(rs.getInt(3));
         listTaskTopic.add(topic);
       }
     } catch (Exception ex) {
@@ -60,9 +60,9 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
     try {
       String query = "UPDATE task_has_topic SET id_table=?,id_topic=? where id_task=?";
       ps = con.prepareStatement(query);
-      ps.setInt(1, taskTopic.getId_table());
-      ps.setInt(2, taskTopic.getId_topic());
-      ps.setInt(3, taskTopic.getId_table());
+      ps.setInt(1, taskTopic.getIdTable());
+      ps.setInt(2, taskTopic.getIdTopic());
+      ps.setInt(3, taskTopic.getIdTable());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -75,8 +75,8 @@ public class TaskTopicDAOImplement implements DAO<TaskTopic>{
     try {
       String query = "DELETE FROM task_has_topic where id_task=? and id_topic=?";
       ps = con.prepareStatement(query);
-      ps.setInt(1, topic.getId_topic());
-      ps.setInt(2, topic.getId_topic());
+      ps.setInt(1, topic.getIdTopic());
+      ps.setInt(2, topic.getIdTopic());
       return ps.executeUpdate() != 0;
     } catch (Exception ex) {
       ex.printStackTrace();
