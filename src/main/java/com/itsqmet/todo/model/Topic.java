@@ -1,17 +1,17 @@
 package com.itsqmet.todo.model;
 
 public class Topic {
-  private int id_topic;
-  private int id_table;
+  private int idTopic;
+  private int idTable;
   private String name;
   private String description;
 
-  public int getId_topic() {
-    return id_topic;
+  public int getIdTopic() {
+    return idTopic;
   }
 
-  public void setId_topic(int id_topic) {
-    this.id_topic = id_topic;
+  public void setIdTopic(int idTopic) {
+    this.idTopic = idTopic;
   }
 
   public String getName() {
@@ -30,10 +30,10 @@ public class Topic {
     this.description = description;
   }
 
-  public int getId_table() {
-    return id_table;
+  public int getIdTable() {
+    return idTable;
   }
-  public void setId_table(int id_table) {
-    this.id_table = id_table;
+  public void setIdTable(int idTable) {
+    this.idTable = idTable;
   }
 }

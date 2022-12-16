@@ -13,6 +13,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/currentTable")
 @MultipartConfig
@@ -20,27 +21,32 @@ public class CurrentTable extends HttpServlet {
   private static CurrentDAO<Table> tableDao;
   private static final Gson GSON = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd").create();
 
+  
+
   public void init() {
     tableDao = new CurrentDAOImplement();
-  }
+    }
+  
 
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setContentType("application/json");
     PrintWriter out = res.getWriter();
     HttpSession session = req.getSession();
-    int id_table = (Integer) session.getAttribute("id_table");
-    Table table = tableDao.currentTable(id_table);
+    int idTable = (Integer) session.getAttribute("idTable");
+    Table table = tableDao.currentTable(idTable);
     String json = GSON.toJson(table);
     out.write(json);
   }
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
     res.setContentType("text/html");
     String data = GSON.toJson(req.getParameterMap());
     data = data.replaceAll("[\\[\\]]", "");
     Table table = GSON.fromJson(data, Table.class);
     HttpSession session = req.getSession();
-    session.setAttribute("id_table", table.getId_table());
+    session.setAttribute("idTable", table.getIdTable());
     session.setMaxInactiveInterval(15 * 60);
   }
 }

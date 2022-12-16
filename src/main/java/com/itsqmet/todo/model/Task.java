@@ -4,30 +4,30 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Task {
-  private int id_task;
-  private int id_table;
+  private int idTask;
+  private int idTable;
   private String importance;
   private String title;
   private String description;
   private String name;
-  private Timestamp created_at;
-  private Date limit_date;
+  private Timestamp createdAt;
+  private Date limitDate;
   private boolean done;
 
-  public int getId_task() {
-    return id_task;
+  public int getIdTask() {
+    return idTask;
   }
 
-  public void setId_task(int id_task) {
-    this.id_task = id_task;
+  public void setIdTask(int idTask) {
+    this.idTask = idTask;
   }
 
-  public int getId_table() {
-    return id_table;
+  public int getIdTable() {
+    return idTable;
   }
 
-  public void setId_table(int id_table) {
-    this.id_table = id_table;
+  public void setIdTable(int idTable) {
+    this.idTable = idTable;
   }
 
   public String getTitle() {
@@ -46,20 +46,20 @@ public class Task {
     this.description = description;
   }
 
-  public Timestamp getCreated_at() {
-    return created_at;
+  public Timestamp getCreatedAt() {
+    return createdAt;
   }
 
-  public void setCreated_at(Timestamp created_at) {
-    this.created_at = created_at;
+  public void setCreatedAt(Timestamp createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public Date getLimit_date() {
-    return limit_date;
+  public Date getLimitDate() {
+    return limitDate;
   }
 
-  public void setLimit_date(Date limit_date) {
-    this.limit_date = limit_date;
+  public void setLimitDate(Date limitDate) {
+    this.limitDate = limitDate;
   }
 
   public boolean isDone() {

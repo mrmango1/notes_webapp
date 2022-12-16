@@ -5,14 +5,14 @@ import com.google.gson.GsonBuilder;
 import com.itsqmet.todo.controller.LoginDAO;
 import com.itsqmet.todo.controller.LoginDAOImplement;
 import com.itsqmet.todo.model.User;
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 @WebServlet("/login")
 @MultipartConfig
@@ -25,6 +25,7 @@ public class Login extends HttpServlet {
 
   private static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
     req.setCharacterEncoding("UTF-8");
     String data = GSON.toJson(req.getParameterMap());
@@ -33,8 +34,8 @@ public class Login extends HttpServlet {
     User userLogin = loginDAO.validate(user);
     if (userLogin != null) {
       HttpSession session = req.getSession();
-      session.setAttribute("id_user", userLogin.getId_user());
-      //setting session to expiry in 30 mins
+      session.setAttribute("id_user", userLogin.getIdUser());
+    
       session.setMaxInactiveInterval(15 * 60);
       String firstnameStr = userLogin.getFirstname().split(" ")[0];
       String lastnameStr = userLogin.getLastname().split(" ")[0];
@@ -50,13 +51,14 @@ public class Login extends HttpServlet {
     }
   }
   // Register method
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
     req.setCharacterEncoding("UTF-8");
     User userLogin = loginDAO.register();
     if (userLogin != null) {
       HttpSession session = req.getSession();
-      session.setAttribute("id_user", userLogin.getId_user());
-      //setting session to expiry in 30 mins
+      session.setAttribute("id_user", userLogin.getIdUser());
+     
       session.setMaxInactiveInterval(15 * 60);
       String firstnameStr = userLogin.getFirstname().split(" ")[0];
       String lastnameStr = userLogin.getLastname().split(" ")[0];
